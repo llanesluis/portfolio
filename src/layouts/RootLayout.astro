@@ -1,0 +1,117 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="selection:bg-accent-light selection:text-accent-dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+
+  <body class="flex min-h-screen flex-col">
+    <Header />
+    <main class="grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: light dark;
+
+    --background: 0, 0%, 99%;
+    --foreground: 0 0% 3.9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+
+    &.dark {
+      --background: #13151a;
+      --foreground: 0 0% 95%;
+      --muted: 0 0% 14.9%;
+      --muted-foreground: 0 0% 63.9%;
+    }
+  }
+
+  html {
+    font-family: system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    overscroll-behavior: none;
+
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+</style>
+
+<!-- dark mode: https://ui.shadcn.com/docs/dark-mode/astro -->
+<script is:inline>
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+  const isDark = getThemePreference() === "dark";
+  document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+  if (typeof localStorage !== "undefined") {
+    const observer = new MutationObserver(() => {
+      const isDark = document.documentElement.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  }
+</script>

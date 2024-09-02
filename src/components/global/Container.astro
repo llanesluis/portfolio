@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  children: any; // Hace que "children" sea obligatorio
+}
+
+const { class: className, ...props } = Astro.props;
+---
+
+<div
+  class:list={["mx-auto size-full max-w-6xl", "px-6 sm:px-8", className]}
+  {...props}
+>
+  <slot />
+</div>

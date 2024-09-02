@@ -1,0 +1,17 @@
+---
+import Container from "./global/Container.astro";
+---
+
+<footer class="border-t border-muted">
+  <Container class="py-4">
+    <span id="currentDate"></span> luisllaboj
+  </Container>
+</footer>
+
+<script>
+  const currentYear = new Date().getFullYear();
+  const dateElement = document.getElementById("currentDate");
+  if (dateElement) {
+    dateElement.innerText = currentYear.toString();
+  }
+</script>
