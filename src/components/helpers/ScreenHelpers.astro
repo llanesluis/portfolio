@@ -1,0 +1,15 @@
+---
+import TailwindScreenSizeIndicator from "./TailwindScreenSizeIndicator.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const isDev = import.meta.env.DEV;
+---
+
+{
+  isDev && (
+    <div class="fixed bottom-5 left-5 isolate flex h-10 w-fit items-center justify-between gap-4 rounded-lg border border-muted bg-background p-4 text-sm font-bold shadow-lg">
+      <TailwindScreenSizeIndicator />
+      <ThemeToggle />
+    </div>
+  )
+}

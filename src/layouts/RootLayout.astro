@@ -2,6 +2,7 @@
 import { ViewTransitions } from "astro:transitions";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import ScreenHelpers from "../components/helpers/ScreenHelpers.astro";
 
 interface Props {
   title: string;
@@ -29,13 +30,12 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <ScreenHelpers />
   </body>
 </html>
 
 <style is:global>
   :root {
-    color-scheme: light dark;
-
     --background: 0, 0%, 99%;
     --foreground: 0 0% 3.9%;
     --muted: 0 0% 96.1%;
@@ -52,7 +52,7 @@ const { title, description } = Astro.props;
     );
 
     &.dark {
-      --background: #13151a;
+      --background: 223, 16%, 9%;
       --foreground: 0 0% 95%;
       --muted: 0 0% 14.9%;
       --muted-foreground: 0 0% 63.9%;
@@ -68,8 +68,8 @@ const { title, description } = Astro.props;
     min-height: 100vh;
     overscroll-behavior: none;
 
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 
   code {
@@ -91,8 +91,8 @@ const { title, description } = Astro.props;
   }
 </style>
 
-<!-- dark mode: https://ui.shadcn.com/docs/dark-mode/astro -->
 <script is:inline>
+  // Si no tiene preferencia en el local storage hace fallback al tema del sistema
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
       return localStorage.getItem("theme");
@@ -101,17 +101,23 @@ const { title, description } = Astro.props;
       ? "dark"
       : "light";
   };
-  const isDark = getThemePreference() === "dark";
-  document.documentElement.classList[isDark ? "add" : "remove"]("dark");
 
-  if (typeof localStorage !== "undefined") {
-    const observer = new MutationObserver(() => {
-      const isDark = document.documentElement.classList.contains("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
+  const setTheme = (theme) => {
+    document.documentElement.classList[theme === "dark" ? "add" : "remove"](
+      "dark",
+    );
+    localStorage.setItem("theme", theme);
+  };
+
+  const theme = getThemePreference();
+  setTheme(theme);
+
+  // Escuchar cambios en la preferencia de tema del sistema
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", (e) => {
+      const newTheme = e.matches ? "dark" : "light";
+      console.log(newTheme);
+      setTheme(newTheme);
     });
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-  }
 </script>
