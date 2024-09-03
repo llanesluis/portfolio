@@ -1,15 +1,15 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { fade, ViewTransitions } from "astro:transitions";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import ScreenHelpers from "../components/helpers/ScreenHelpers.astro";
 
 interface Props {
   title: string;
-  description: string;
+  description?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description = "Luis Llanes' personal website" } = Astro.props;
 ---
 
 <!doctype html>
@@ -95,26 +95,26 @@ const { title, description } = Astro.props;
   }
 </style>
 
-<script is:inline>
+<script>
+  type Theme = "light" | "dark";
   // Si no tiene preferencia en el local storage hace fallback al tema del sistema
-  const getThemePreference = () => {
+  const getThemePreference = (): Theme => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
+      return localStorage.getItem("theme") as Theme;
     }
     return window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
   };
 
-  const setTheme = (theme) => {
+  const setTheme = (theme: Theme) => {
     document.documentElement.classList[theme === "dark" ? "add" : "remove"](
       "dark",
     );
     localStorage.setItem("theme", theme);
   };
 
-  const theme = getThemePreference();
-  setTheme(theme);
+  setTheme(getThemePreference());
 
   // Escuchar cambios en la preferencia de tema del sistema
   window
@@ -123,4 +123,9 @@ const { title, description } = Astro.props;
       const newTheme = e.matches ? "dark" : "light";
       setTheme(newTheme);
     });
+
+  // Para mantener el estado debido a las <ViewTransitions/>
+  document.addEventListener("astro:after-swap", () => {
+    setTheme(getThemePreference());
+  });
 </script>
