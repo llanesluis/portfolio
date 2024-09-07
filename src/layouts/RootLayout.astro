@@ -1,7 +1,7 @@
 ---
-import { fade, ViewTransitions } from "astro:transitions";
+import { ViewTransitions } from "astro:transitions";
 import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import Noise from "../components/global/Noise.astro";
 import ScreenHelpers from "../components/helpers/ScreenHelpers.astro";
 
 interface Props {
@@ -29,10 +29,16 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
   </head>
 
   <body class="flex min-h-screen flex-col">
-    <Header />
+    <Noise />
+    <div
+      class="pointer-events-none absolute inset-x-0 -top-56 -z-50 mx-auto size-7/12 rounded-full bg-accent opacity-5 blur-3xl"
+    >
+    </div>
+
     <main class="grow">
       <slot />
     </main>
+
     <Footer />
     <ScreenHelpers />
   </body>
@@ -40,6 +46,8 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
 
 <style is:global>
   :root {
+    color-scheme: light dark;
+
     --background: 0, 0%, 99%;
     --foreground: 0 0% 3.9%;
     --muted: 0 0% 96.1%;
@@ -86,6 +94,30 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
       Bitstream Vera Sans Mono,
       Courier New,
       monospace;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  figcaption {
+    text-wrap: pretty;
+    max-width: 75ch;
+  }
+
+  header,
+  footer,
+  main,
+  section,
+  article {
+    container-type: inline-size;
   }
 
   @media (prefers-reduced-motion: reduce) {
