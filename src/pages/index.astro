@@ -1,26 +1,24 @@
 ---
+import "@fontsource-variable/onest";
+
 import Container from "../components/global/Container.astro";
 import Section from "../components/global/Section.astro";
+import Hero from "../components/sections/Hero.astro";
 import RootLayout from "../layouts/RootLayout.astro";
+import Projects from "../components/sections/Projects.astro";
+import AboutMe from "../components/sections/AboutMe.astro";
+import ContactMe from "../components/sections/ContactMe.astro";
+import Experience from "../components/sections/Experience.astro";
 ---
 
 <RootLayout title="luisllaboj | FullStack dev">
-  <Section>
-    <Container>
-      <h1 class="text-7xl font-bold">
-        Hi i'm <span class="text-gradient">Luis</span>👋🏻
-      </h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, at!</p>
-    </Container>
-  </Section>
+  <Container>
+    <Section>
+      <Hero />
+      <Experience />
+      <Projects />
+      <AboutMe />
+      <ContactMe />
+    </Section>
+  </Container>
 </RootLayout>
-
-<style>
-  .text-gradient {
-    background: var(--accent-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 400%;
-    background-position: 0%;
-  }
-</style>

@@ -1,0 +1,95 @@
+---
+import ExternalLink from "../global/ExternalLink.astro";
+import GlassContainer from "../global/GlassContainer.astro";
+import GradientText from "../global/GradientText.astro";
+import SiteHeader from "../SiteHeader.astro";
+---
+
+<section
+  id="nav"
+  class="sticky inset-x-0 top-6 z-50 opacity-0 transition duration-75 will-change-transform"
+>
+  <SiteHeader transition:name="header" />
+</section>
+
+<section class="py-24 font-onest">
+  <div id="intersection">
+    <header
+      id="header"
+      class="flex flex-col gap-8 transition duration-75 will-change-transform"
+    >
+      <h1 class="text-7xl font-bold">
+        hi, i'm <GradientText>Luis</GradientText>
+      </h1>
+
+      <div>
+        <h2 class="text-xl">
+          I'm a Software Engineer and a <span class="font-semibold text-accent"
+            >FullStack Web Developer</span
+          >
+        </h2>
+
+        <p class="text-muted-foreground">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus
+          maiores cum modi est ea, eveniet id? Suscipit, sequi.
+        </p>
+      </div>
+
+      <div class="flex gap-4">
+        <ExternalLink href="https://www.linkedin.com/in/llanesluis/"
+          ><GlassContainer
+            class="group rounded-full px-4 py-2 text-foreground transition-colors hover:bg-accent-light dark:hover:bg-accent-dark"
+            >LinkedIn</GlassContainer
+          ></ExternalLink
+        >
+
+        <ExternalLink href="https://github.com/llanesluis"
+          ><GlassContainer
+            class="group rounded-full px-4 py-2 text-foreground transition-colors hover:bg-accent-light dark:hover:bg-accent-dark"
+            >GitHub</GlassContainer
+          ></ExternalLink
+        >
+      </div>
+    </header>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const intersectionRef = document.getElementById("intersection");
+    const header = document.getElementById("header");
+    const nav = document.getElementById("nav");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            header?.classList.add("-translate-y-2", "scale-95", "opacity-0");
+            header?.classList.remove("opacity-100");
+
+            nav?.classList.remove(
+              "-translate-y-2",
+              "scale-[0.95]",
+              "opacity-0",
+            );
+            nav?.classList.add("opacity-100", "delay-50");
+          } else {
+            header?.classList.remove("-translate-y-2", "scale-95", "opacity-0");
+            header?.classList.add("opacity-100");
+
+            nav?.classList.add("-translate-y-2", "scale-[0.95]", "opacity-0");
+            nav?.classList.remove("opacity-100", "delay-50");
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-100px",
+      },
+    );
+
+    if (intersectionRef) {
+      observer.observe(intersectionRef);
+    }
+  });
+</script>

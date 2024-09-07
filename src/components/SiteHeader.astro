@@ -1,0 +1,116 @@
+---
+import GlassContainer from "./global/GlassContainer.astro";
+import Links from "./Links.astro";
+
+const FOCUS_VISIBLE_OUTLINE = `focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70`;
+
+const navItems = [
+  {
+    title: "Experience",
+    label: "experience",
+    url: "/#experience",
+  },
+  {
+    title: "Projects",
+    label: "projects",
+    url: "/#projects",
+  },
+  {
+    title: "About me",
+    label: "about-me",
+    url: "/#about-me",
+  },
+  {
+    title: "Contact",
+    label: "contact-me",
+    url: "/#contact-me",
+  },
+];
+---
+
+<GlassContainer class="w-full rounded-full py-2 pl-2.5 pr-6">
+  <header class="flex items-center justify-between font-onest font-semibold">
+    <a
+      href="#"
+      title="Home"
+      class:list={["rounded-full ring-accent", FOCUS_VISIBLE_OUTLINE]}
+    >
+      <div class="group size-10 overflow-hidden rounded-full bg-accent">
+        <img
+          src="/photo.jpg"
+          alt="My photo"
+          class="rounded-full transition-transform hover:scale-90"
+        />
+      </div>
+    </a>
+
+    <nav class="flex gap-2" id="nav">
+      {
+        navItems.map((link) => (
+          <a
+            class="relative block px-2 py-2 transition hover:text-accent dark:hover:text-accent"
+            aria-label={link.label}
+            href={link.url}
+          >
+            {link.title}
+          </a>
+        ))
+      }
+    </nav>
+
+    <Links />
+  </header>
+</GlassContainer>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const experienceSection = document.querySelector("#experience");
+    const projectsSection = document.querySelector("#projects");
+    const aboutMeSection = document.querySelector("#about-me");
+    const contactMeSection = document.querySelector("#contact-me");
+
+    const sections = [
+      experienceSection,
+      projectsSection,
+      aboutMeSection,
+      contactMeSection,
+    ];
+
+    const navItems = document.querySelectorAll("header #nav a");
+
+    const callback = (entries: any[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("text-accent");
+            } else {
+              item.classList.remove("text-accent");
+            }
+          });
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    });
+
+    sections.forEach((section) => {
+      observer.observe(section!);
+    });
+
+    // Cleanup function
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect();
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section!);
+        });
+      }
+    };
+  });
+</script>
