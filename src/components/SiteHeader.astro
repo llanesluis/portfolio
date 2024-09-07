@@ -1,5 +1,12 @@
 ---
+import ExternalLink from "./global/ExternalLink.astro";
 import GlassContainer from "./global/GlassContainer.astro";
+import AboutMe from "./icons/AboutMe.astro";
+import Briefcase from "./icons/Briefcase.astro";
+import Code from "./icons/Code.astro";
+import GitHub from "./icons/GitHub.astro";
+import LinkedIn from "./icons/LinkedIn.astro";
+import Mail from "./icons/Mail.astro";
 import Links from "./Links.astro";
 
 const FOCUS_VISIBLE_OUTLINE = `focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70`;
@@ -9,21 +16,25 @@ const navItems = [
     title: "Experience",
     label: "experience",
     url: "/#experience",
+    icon: "briefcase",
   },
   {
     title: "Projects",
     label: "projects",
     url: "/#projects",
+    icon: "code",
   },
   {
     title: "About me",
     label: "about-me",
     url: "/#about-me",
+    icon: "about-me",
   },
   {
     title: "Contact",
     label: "contact-me",
     url: "/#contact-me",
+    icon: "mail",
   },
 ];
 ---
@@ -44,11 +55,11 @@ const navItems = [
       </div>
     </a>
 
-    <nav class="flex gap-2" id="nav">
+    <nav class="hidden gap-4 md:flex" id="nav">
       {
         navItems.map((link) => (
           <a
-            class="relative block px-2 py-2 transition hover:text-accent dark:hover:text-accent"
+            class="relative px-2 py-2 transition hover:text-accent dark:hover:text-accent"
             aria-label={link.label}
             href={link.url}
           >
@@ -58,7 +69,40 @@ const navItems = [
       }
     </nav>
 
-    <Links />
+    <!-- Todo: check if there's a better way to render icons -->
+    <nav class="flex justify-between gap-3 sm:gap-12 md:hidden" id="nav">
+      {
+        navItems.map((link) => (
+          <a
+            class="relative block py-2 transition hover:text-accent dark:hover:text-accent"
+            aria-label={link.label}
+            href={link.url}
+          >
+            {link.icon === "briefcase" && <Briefcase />}
+            {link.icon === "code" && <Code />}
+            {link.icon === "about-me" && <AboutMe />}
+            {link.icon === "mail" && <Mail />}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden md:flex">
+      <Links />
+    </div>
+
+    <div class="flex gap-1 md:hidden">
+      <ExternalLink
+        href="https://www.linkedin.com/in/llanesluis/"
+        class="font-semibold opacity-90 transition"
+        icon><LinkedIn /></ExternalLink
+      >
+      <ExternalLink
+        href="https://github.com/llanesluis"
+        class="font-semibold opacity-90 transition"
+        icon><GitHub /></ExternalLink
+      >
+    </div>
   </header>
 </GlassContainer>
 
