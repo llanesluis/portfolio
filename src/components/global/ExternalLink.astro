@@ -1,0 +1,40 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  icon?: boolean;
+}
+const { title, href, class: className, icon } = Astro.props;
+---
+
+<a
+  rel="noopener noreferrer"
+  target="_blank"
+  title={title}
+  href={href}
+  class:list={[
+    "flex w-fit items-center justify-between gap-1 transition-transform hover:text-accent group-hover:text-accent",
+    "group",
+    className,
+  ]}
+>
+  <slot />
+  {
+    icon && (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-3 transition-transform group-hover:scale-110"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+        />
+      </svg>
+    )
+  }
+</a>
