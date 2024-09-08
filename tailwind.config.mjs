@@ -14,9 +14,9 @@ export default {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "rgb(var(--accent))",
-          light: "rgb(var(--accent-light))",
-          dark: "rgb(var(--accent-dark))",
+          DEFAULT: "hsl(var(--accent))",
+          light: "hsl(var(--accent-light))",
+          dark: "hsl(var(--accent-dark))",
         },
       },
       fontFamily: {
@@ -25,25 +25,25 @@ export default {
       boxShadow: () => ({
         // inspired by https://www.joshwcomeau.com/shadow-palette/
         "surface-glass": `
-          inset 0.25px 1px 0 0 rgb(var(--accent), 0.25),
-          0px 0.3px 0.3px rgba(var(--accent), 0.02),
-          0px 2.2px 2.5px -0.4px rgba(var(--accent), 0.02),
-          0px 4.3px 4.8px -0.8px rgba(var(--accent), 0.02),
-          0px 7.5px 8.4px -1.2px rgba(var(--accent), 0.02),
-          0px 12.8px 14.4px -1.7px rgba(var(--accent), 0.02),
-          0px 21px 23.6px -2.1px rgba(var(--accent), 0.02),
-          0px 33.2px 37.4px -2.5px rgba(var(--accent), 0.02)`,
+          inset 0.25px 1px 0 0 hsl(var(--accent) / 0.25),
+          0px 0.3px 0.3px hsl(var(--accent) / 0.02),
+          0px 2.2px 2.5px -0.4px hsl(var(--accent) / 0.02),
+          0px 4.3px 4.8px -0.8px hsl(var(--accent) / 0.02),
+          0px 7.5px 8.4px -1.2px hsl(var(--accent) / 0.02),
+          0px 12.8px 14.4px -1.7px hsl(var(--accent) / 0.02),
+          0px 21px 23.6px -2.1px hsl(var(--accent) / 0.02),
+          0px 33.2px 37.4px -2.5px hsl(var(--accent) / 0.02)`,
         "surface-elevation-low": `
-          inset 0.25px 1px 1px 0 rgb(var(--accent), 0.15),
-          0.3px 0.5px 0.7px rgba(var(--accent), 0.2),
-          0.4px 0.8px 1px -1.2px rgba(var(--accent), 0.2),
-          1px 2px 2.5px -2.5px rgba(var(--accent), 0.2);`,
+          inset 0.25px 1px 1px 0 rgb(var(--accent) / 0.15),
+          0.3px 0.5px 0.7px hsl(var(--accent), 0.2) /
+          0.4px 0.8px 1px -1.2px hsl(var(--accent) / 0.2),
+          1px 2px 2.5px -2.5px hsl(var(--accent) / 0.2);`,
         "surface-elevation-medium": `
-          inset 0.25px 1px 1px 0 rgb(var(--accent), 0.15),
-          0.3px 0.5px 0.7px rgba(var(--accent), 0.1),
-          0.8px 1.6px 2px -0.8px rgba(var(--accent), 0.1),
-          2.1px 4.1px 5.2px -1.7px rgba(var(--accent), 0.1),
-          5px 10px 12.6px -2.5px rgba(var(--accent), 0.1)`,
+          inset 0.25px 1px 1px 0 rgb(var(--accent) / 0.15),
+          0.3px 0.5px 0.7px hsl(var(--accent) / 0.1),
+          0.8px 1.6px 2px -0.8px hsl(var(--accent) / 0.1),
+          2.1px 4.1px 5.2px -1.7px hsl(var(--accent) / 0.1),
+          5px 10px 12.6px -2.5px hsl(var(--accent) / 0.1)`,
       }),
       keyframes: {
         "fade-in": {

@@ -48,21 +48,30 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
   :root {
     color-scheme: light dark;
 
-    --background: 0, 0%, 99%;
+    --background: 0 0% 99%;
     --foreground: 0 0% 3.9%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
 
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
+    /* --accent: 136, 58, 234; */
+    --accent: 267 81% 57%;
+    /* --accent-light: 224, 204, 250; */
+    --accent-light: 266 82% 89%;
+    /* --accent-dark: 49, 10, 101; */
+    --accent-dark: 266 82% 22%;
+    /* --accent-gradient: linear-gradient(
       45deg,
       rgb(var(--accent)),
       rgb(var(--accent-light)) 30%,
       white 60%
-    );
+    ); */
 
+    --accent-gradient: linear-gradient(
+      45deg,
+      hsl(var(--accent)),
+      hsl(var(--accent-light)) 30%,
+      white 60%
+    );
     &.dark {
       --background: 223, 16%, 9%;
       --foreground: 0 0% 95%;
