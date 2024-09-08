@@ -9,8 +9,6 @@ import LinkedIn from "./icons/LinkedIn.astro";
 import Mail from "./icons/Mail.astro";
 import Links from "./Links.astro";
 
-const FOCUS_VISIBLE_OUTLINE = `focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70`;
-
 const navItems = [
   {
     title: "Experience",
@@ -44,13 +42,17 @@ const navItems = [
     <a
       href="/#hero"
       title="Home"
-      class:list={["rounded-full ring-accent", FOCUS_VISIBLE_OUTLINE]}
+      class:list={[
+        "rounded-full ring-accent transition",
+        "focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70",
+        "active:scale-95",
+      ]}
     >
       <div class="group size-10 overflow-hidden rounded-full bg-accent">
         <img
           src="/photo.jpg"
           alt="My photo"
-          class="rounded-full transition-transform hover:scale-90"
+          class:list={["rounded-full transition", "hover:scale-90"]}
         />
       </div>
     </a>
@@ -59,7 +61,11 @@ const navItems = [
       {
         navItems.map((link) => (
           <a
-            class="relative px-2 py-2 transition hover:text-accent dark:hover:text-accent"
+            class:list={[
+              "relative px-2 py-2 transition",
+              "hover:text-accent dark:hover:text-accent",
+              "active:scale-95",
+            ]}
             aria-label={link.label}
             href={link.url}
           >
@@ -74,7 +80,11 @@ const navItems = [
       {
         navItems.map((link) => (
           <a
-            class="relative block py-2 transition hover:text-accent dark:hover:text-accent"
+            class:list={[
+              "relative block py-2 transition",
+              "hover:text-accent dark:hover:text-accent",
+              "active:scale-95",
+            ]}
             aria-label={link.label}
             href={link.url}
           >
