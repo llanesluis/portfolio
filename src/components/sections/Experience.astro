@@ -1,9 +1,21 @@
-<section
-  id="experience"
-  class:list={[
-    "my-16 h-screen rounded-lg bg-muted",
-    "flex items-center justify-center",
-  ]}
->
-  <p>pending...</p>
+---
+import GradientText from "../global/GradientText.astro";
+import SectionHeading from "../global/SectionHeading.astro";
+---
+
+<section id="experience" class:list={["mt-12S mb-20", "flex flex-col gap-4"]}>
+  <SectionHeading as="h2" class="">
+    <GradientText>Experience</GradientText>
+  </SectionHeading>
+
+  <p class="animate-pulse">work in progress...</p>
+
+  <div
+    class:list={[
+      "h-96 rounded-lg bg-muted",
+      "flex items-center justify-center",
+    ]}
+  >
+    <p>pending...</p>
+  </div>
 </section>
