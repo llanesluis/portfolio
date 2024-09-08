@@ -13,8 +13,10 @@ const { title, href, class: className, icon } = Astro.props;
   title={title}
   href={href}
   class:list={[
-    "flex w-fit items-center justify-between gap-1 transition-transform hover:text-accent group-hover:text-accent",
     "group",
+    "flex w-fit items-center justify-between gap-1 transition",
+    "hover:text-accent group-hover:text-accent",
+    "active:scale-95",
     className,
   ]}
 >
