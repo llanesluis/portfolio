@@ -35,7 +35,7 @@ export default {
           0px 33.2px 37.4px -2.5px hsl(var(--accent) / 0.02)`,
         "surface-elevation-low": `
           inset 0.25px 1px 1px 0 rgb(var(--accent) / 0.15),
-          0.3px 0.5px 0.7px hsl(var(--accent), 0.2) /
+          0.3px 0.5px 0.7px hsl(var(--accent)/ 0.2),
           0.4px 0.8px 1px -1.2px hsl(var(--accent) / 0.2),
           1px 2px 2.5px -2.5px hsl(var(--accent) / 0.2);`,
         "surface-elevation-medium": `

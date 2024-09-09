@@ -8,7 +8,7 @@ const { class: className } = Astro.props;
 
 <div
   class:list={[
-    "size-fit bg-background/95 backdrop-blur transition-shadow [@supports(backdrop-filter:blur(0px))]:bg-foreground/[3%]",
+    "size-fit bg-background/95 backdrop-blur transition-shadow duration-200 [@supports(backdrop-filter:blur(0px))]:bg-foreground/[3%]",
     "shadow-surface-glass hover:shadow-surface-elevation-low",
     className,
   ]}
