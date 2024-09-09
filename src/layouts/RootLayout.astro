@@ -30,10 +30,6 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
 
   <body class="flex min-h-screen flex-col">
     <Noise />
-    <div
-      class="pointer-events-none absolute inset-x-0 -top-56 -z-50 mx-auto size-7/12 rounded-full bg-accent opacity-5 blur-3xl"
-    >
-    </div>
 
     <main class="grow">
       <slot />
@@ -48,32 +44,51 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
   :root {
     color-scheme: light dark;
 
-    --background: 0 0% 99%;
+    --background: 0 0% 97%;
     --foreground: 0 0% 3.9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+    --muted: 0 0% 93%;
+    --muted-foreground: 0 0% 42%;
 
-    /* --accent: 136, 58, 234; */
     --accent: 267 81% 57%;
-    /* --accent-light: 224, 204, 250; */
     --accent-light: 266 82% 89%;
-    /* --accent-dark: 49, 10, 101; */
     --accent-dark: 266 82% 22%;
-    /* --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    ); */
 
     --accent-gradient: linear-gradient(
       45deg,
       hsl(var(--accent)),
-      hsl(var(--accent-light)) 30%,
-      white 60%
+      hsl(var(--accent-light)) 40%
     );
+
+    --gradient-background: radial-gradient(
+        37.88% 68.62% at 50% 0,
+        hsl(var(--accent) / 0.2) 0,
+        hsl(var(--accent) / 0) 80%
+      ),
+      radial-gradient(
+        10% 10% at 50% 0,
+        hsl(var(--accent) / 0.5) 0,
+        hsl(var(--accent) / 0.2) 90%,
+        hsl(var(--accent) / 0) 100%
+      ),
+      radial-gradient(
+        100% 28.09% at 100% 10%,
+        hsl(var(--accent) / 0.2) 0,
+        hsl(var(--accent) / 0.05) 80%,
+        hsl(var(--accent) / 0) 100%
+      ),
+      linear-gradient(
+        180deg,
+        hsl(var(--accent) / 0.075) 0,
+        hsl(var(--accent) / 0.05) 70%,
+        hsl(var(--background))
+      ),
+      radial-gradient(
+        74.84% 135.56% at 100% 10%,
+        hsl(var(--accent) / 0.5) 0,
+        hsl(var(--background)) 80%
+      );
     &.dark {
-      --background: 223, 16%, 9%;
+      --background: 223 16% 9%;
       --foreground: 0 0% 95%;
       --muted: 0 0% 14.9%;
       --muted-foreground: 0 0% 63.9%;
@@ -94,6 +109,39 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
     color: hsl(var(--foreground));
   }
 
+  main::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    width: calc(100% + 100px);
+    height: 100vh;
+    z-index: -90;
+
+    background-color: hsl(var(--background));
+    background-image: var(--gradient-background);
+    background-repeat: no-repeat;
+    background-size: 250%;
+    filter: blur(50px);
+    overflow-x: hidden;
+
+    mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+  }
+
+  main::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+
+    background-color: hsl(var(--background));
+  }
   code {
     font-family:
       Menlo,
