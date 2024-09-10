@@ -7,16 +7,16 @@ import SiteHeader from "../SiteHeader.astro";
 
 <section
   id="nav"
-  class="sticky inset-x-0 top-6 z-50 opacity-0 transition duration-75 will-change-transform"
+  class="sticky inset-x-0 top-6 z-50 opacity-0 transition duration-200 will-change-transform"
 >
   <SiteHeader transition:name="header" />
 </section>
 
-<section class="py-24 font-onest" id="hero">
+<section class="py-20 font-onest" id="hero">
   <div id="intersection">
     <header
       id="header"
-      class="flex flex-col gap-8 transition duration-75 will-change-transform"
+      class="flex flex-col gap-8 transition duration-150 will-change-transform"
     >
       <h1 class="text-7xl font-bold">
         hi, i'm <GradientText>Luis</GradientText>
@@ -53,6 +53,8 @@ import SiteHeader from "../SiteHeader.astro";
     </header>
   </div>
 </section>
+<!-- Extra space to give the header room to show up -->
+<div class="h-12 md:h-8"></div>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -84,7 +86,7 @@ import SiteHeader from "../SiteHeader.astro";
       },
       {
         root: null,
-        rootMargin: "-100px",
+        rootMargin: "-80px",
       },
     );
 

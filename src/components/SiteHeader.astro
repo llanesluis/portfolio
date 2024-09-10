@@ -132,24 +132,32 @@ const navItems = [
 
     const navItems = document.querySelectorAll("header #nav a");
 
-    const callback = (entries: any[]) => {
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      let mostVisibleEntry: any = null;
+      let maxRatio = 0;
+
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          navItems.forEach((item) => {
-            if (item.getAttribute("aria-label") == entry.target.id) {
-              item.classList.add("text-accent");
-            } else {
-              item.classList.remove("text-accent");
-            }
-          });
+        if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+          mostVisibleEntry = entry;
+          maxRatio = entry.intersectionRatio;
         }
       });
+
+      if (mostVisibleEntry) {
+        navItems.forEach((item) => {
+          if (item.getAttribute("aria-label") === mostVisibleEntry.target.id) {
+            item.classList.add("text-accent");
+          } else {
+            item.classList.remove("text-accent");
+          }
+        });
+      }
     };
 
     const observer = new IntersectionObserver(callback, {
       root: null,
-      rootMargin: "0px",
-      threshold: 0.3,
+      rootMargin: "-30% 0px -50% 0px",
+      threshold: Array.from({ length: 101 }, (_, i) => i / 100), // Array con valores de 0 a 1 en incrementos de 0.01
     });
 
     sections.forEach((section) => {
