@@ -3,6 +3,7 @@ import { ViewTransitions } from "astro:transitions";
 import Footer from "../components/Footer.astro";
 import Noise from "../components/global/Noise.astro";
 import ScreenHelpers from "../components/helpers/ScreenHelpers.astro";
+import ThemeControl from "../components/global/ThemeControl.astro";
 
 interface Props {
   title: string;
@@ -36,6 +37,8 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
     </main>
 
     <Footer />
+
+    <ThemeControl />
     <ScreenHelpers />
   </body>
 </html>
@@ -44,14 +47,20 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
   :root {
     color-scheme: light dark;
 
-    --background: 0 0% 97%;
-    --foreground: 0 0% 3.9%;
-    --muted: 0 0% 93%;
-    --muted-foreground: 0 0% 42%;
+    --background: 0 0% 95%;
+    --foreground: 0 0% 3%;
+    --muted: 0 0% 91%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 267 81% 57%;
-    --accent-light: 266 82% 89%;
-    --accent-dark: 266 82% 22%;
+    --accent-hue: 270;
+    --accent-saturation: 75%;
+    --accent-lightness: 55%;
+
+    --accent: var(--accent-hue) var(--accent-saturation) var(--accent-lightness);
+    --accent-light: var(--accent-hue) var(--accent-saturation)
+      calc(var(--accent-lightness) + 30%);
+    --accent-dark: var(--accent-hue) var(--accent-saturation)
+      calc(var(--accent-lightness) - 30%);
 
     --accent-gradient: linear-gradient(
       45deg,

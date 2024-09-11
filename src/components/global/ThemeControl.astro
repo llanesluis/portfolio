@@ -1,0 +1,22 @@
+<script>
+  const doc = document.documentElement;
+
+  const changeAccentHue = (hue: number) => {
+    doc.style.setProperty("--accent-hue", `${hue}`);
+  };
+
+  // Default value must be in sync with the :root --accent-hue in RootLayout.astro
+  const defaultAccentHue = 270;
+  let accentHue =
+    parseInt(doc.style.getPropertyValue("--accent-hue")) || defaultAccentHue;
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "ArrowLeft") {
+      changeAccentHue((accentHue += 10));
+    } else if (e.key === "ArrowRight") {
+      changeAccentHue((accentHue -= 10));
+    }
+  };
+
+  document.addEventListener("keydown", handleKeyDown);
+</script>
