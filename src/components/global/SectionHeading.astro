@@ -9,6 +9,9 @@ interface Props
 const { as: Component = "h2", class: className, ...props } = Astro.props;
 ---
 
-<Component class:list={["font-onest text-4xl font-bold", className]} {...props}>
+<Component
+  class:list={["font-onest text-4xl font-bold lowercase", className]}
+  {...props}
+>
   <slot />
 </Component>
