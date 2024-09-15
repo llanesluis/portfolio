@@ -1,0 +1,14 @@
+---
+import GlassContainer from "./global/GlassContainer.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<GlassContainer
+  class="flex items-center gap-1 rounded-xl px-2 py-[2px] font-mono text-xs"
+  ><slot /> {title}
+</GlassContainer>

@@ -1,0 +1,66 @@
+---
+import Badge from "./Badge.astro";
+import AstroIcon from "./icons/AstroIcon.astro";
+import Tailwind from "./icons/Tailwind.astro";
+import TypeScript from "./icons/TypeScript.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  imgUrl?: string;
+}
+
+const { title, description, imgUrl } = Astro.props;
+---
+
+<article class="py-8 max-sm:-mx-6">
+  <div class="group/parent flex flex-col gap-4 md:flex-row">
+    <div
+      class:list={[
+        "group relative aspect-video max-h-[250px] w-full shrink-0 rounded-xl shadow-surface-glass",
+        "bg-gradient-to-br from-accent-dark to-accent-light",
+        "max-sm:rounded-none md:w-1/2",
+        "overflow-hidden bg-clip-padding",
+      ]}
+    >
+      <img
+        src={imgUrl ?? "/projects/placeholder.webp"}
+        alt={`${title}`}
+        class:list={[
+          "absolute translate-y-6 rounded-xl object-cover transition duration-300 ease-in-out group-hover/parent:scale-105 md:translate-x-6",
+          "sm:translate-x-14",
+          "max-sm:m-0 max-sm:translate-x-0 max-sm:rounded-none",
+          !imgUrl && "opacity-60",
+        ]}
+      />
+    </div>
+
+    <div class="space-y-4 max-sm:mx-6">
+      <h3 class="text-xl font-bold">{title}</h3>
+      <p class="text-muted-foreground">
+        {description}
+      </p>
+
+      <div class="flex flex-wrap gap-2">
+        <Badge title="Astro">
+          <AstroIcon class="size-3" />
+        </Badge>
+        <Badge title="TailwindCSS">
+          <Tailwind class="size-3" />
+        </Badge>
+        <Badge title="TypeScript">
+          <TypeScript class="size-3" />
+        </Badge>
+        <Badge title="Astro">
+          <AstroIcon class="size-3" />
+        </Badge>
+        <Badge title="TailwindCSS">
+          <Tailwind class="size-3" />
+        </Badge>
+        <Badge title="TypeScript">
+          <TypeScript class="size-3" />
+        </Badge>
+      </div>
+    </div>
+  </div>
+</article>

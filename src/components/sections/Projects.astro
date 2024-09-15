@@ -1,6 +1,7 @@
 ---
 import GradientText from "../global/GradientText.astro";
 import SectionHeading from "../global/SectionHeading.astro";
+import Project from "../Project.astro";
 ---
 
 <section id="projects" class:list={["mb-20 mt-12", "flex flex-col gap-4"]}>
@@ -8,14 +9,19 @@ import SectionHeading from "../global/SectionHeading.astro";
     <GradientText class:list={["text-accent"]}>Projects</GradientText>
   </SectionHeading>
 
-  <p class="animate-pulse">work in progress...</p>
+  <Project
+    title="Project One"
+    description="Lorem ipsum dolor sit amet"
+    imgUrl="/projects/portfolio.png"
+  />
+  <Project
+    title="Project Two"
+    description="  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, esse excepturi reiciendis non aspernatur assumenda blanditiis?"
+    imgUrl="/projects/portfolio.png"
+  />
 
-  <div
-    class:list={[
-      "h-96 rounded-lg bg-muted",
-      "flex items-center justify-center",
-    ]}
-  >
-    <p>pending...</p>
-  </div>
+  <Project
+    title="Project Three"
+    description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam doloremque ut, quaerat sapiente officiis eligendi qui dolore excepturi! Odit aspernatur esse neque?"
+  />
 </section>
