@@ -1,0 +1,28 @@
+<div id="scrollProgress"></div>
+
+<style>
+  @property --scrollProgress {
+    syntax: "<percentage>";
+    inherits: false;
+    initial-value: 0%;
+  }
+
+  @keyframes scaleProgress {
+    to {
+      --scrollProgress: 100%;
+    }
+  }
+
+  #scrollProgress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: hsl(var(--accent));
+
+    height: 0.2rem;
+    width: var(--scrollProgress);
+    animation: scaleProgress auto linear;
+    animation-timeline: scroll(root);
+  }
+</style>

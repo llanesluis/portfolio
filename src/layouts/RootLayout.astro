@@ -4,6 +4,7 @@ import Footer from "../components/Footer.astro";
 import Noise from "../components/global/Noise.astro";
 import ScreenHelpers from "../components/helpers/ScreenHelpers.astro";
 import ThemeControl from "../components/global/ThemeControl.astro";
+import ScrollProgressBar from "../components/global/ScrollProgressBar.astro";
 
 interface Props {
   title: string;
@@ -30,6 +31,7 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
   </head>
 
   <body class="relative flex min-h-screen flex-col">
+    <ScrollProgressBar />
     <Noise />
 
     <main class="grow">
