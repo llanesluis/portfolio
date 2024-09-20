@@ -31,15 +31,14 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
   </head>
 
   <body class="relative flex min-h-screen flex-col">
-    <ScrollProgressBar />
-    <Noise />
-
-    <main class="grow">
+    <div class="grow">
       <slot />
-    </main>
+    </div>
 
     <Footer />
 
+    <Noise />
+    <ScrollProgressBar />
     <ThemeControl />
     <ScreenHelpers />
   </body>
