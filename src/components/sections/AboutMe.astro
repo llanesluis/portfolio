@@ -1,21 +1,63 @@
 ---
 import GradientText from "../global/GradientText.astro";
 import SectionHeading from "../global/SectionHeading.astro";
+import Avatar from "../Avatar.astro";
+import Section from "../global/Section.astro";
+import Highlight from "../global/Highlight.astro";
 ---
 
-<section id="about-me" class:list={["mt-12S mb-20", "flex flex-col gap-4"]}>
+<Section id="about-me">
   <SectionHeading as="h2" class="">
     <GradientText>About Me</GradientText>
   </SectionHeading>
 
-  <p class="animate-pulse">work in progress...</p>
+  <article class="info">
+    <div class="flex flex-col gap-4">
+      <p class="">
+        My name is Luis Llanes, I'm a Software Engineering student interested in
+        web development. With <Highlight>strong common sense</Highlight>,
+        <Highlight>logical thinking</Highlight>, and <Highlight
+          >problem-solving skills</Highlight
+        >, I strive for excellence in everything I do, which drives me to seek
+        high-quality solutions.
+      </p>
+      <p class="">
+        I am looking for challenging opportunities to test my abilities and
+        continue expanding my skills, committed to learning new technologies and
+        frameworks.
+      </p>
+    </div>
 
-  <div
-    class:list={[
-      "h-96 rounded-lg bg-muted",
-      "flex items-center justify-center",
-    ]}
-  >
-    <p>pending...</p>
-  </div>
-</section>
+    <div class="avatar mx-auto"><Avatar /></div>
+  </article>
+</Section>
+
+<style>
+  .info {
+    display: grid;
+    gap: 0.5rem;
+    align-items: center;
+
+    .avatar {
+      z-index: -1;
+      transition: all 0.3s ease-in-out;
+      right: -38px;
+    }
+    @media screen and (min-width: 768px) {
+      grid-template-columns: 2fr 1fr;
+
+      .avatar {
+        position: absolute;
+        scale: 0.8;
+        margin-right: -24px;
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      .avatar {
+        margin-right: 0px;
+        scale: 1;
+      }
+    }
+  }
+</style>

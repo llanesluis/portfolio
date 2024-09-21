@@ -1,6 +1,9 @@
 ---
 import Badge from "./Badge.astro";
 import AstroIcon from "./icons/AstroIcon.astro";
+import CSS from "./icons/CSS.astro";
+import Git from "./icons/Git.astro";
+import HTML from "./icons/HTML.astro";
 import Tailwind from "./icons/Tailwind.astro";
 import TypeScript from "./icons/TypeScript.astro";
 
@@ -42,14 +45,11 @@ const { title, description, imgUrl } = Astro.props;
       </p>
 
       <div class="flex flex-wrap gap-2">
-        <Badge title="Astro">
-          <AstroIcon class="size-3" />
+        <Badge title="HTML">
+          <HTML class="size-3" />
         </Badge>
-        <Badge title="TailwindCSS">
-          <Tailwind class="size-3" />
-        </Badge>
-        <Badge title="TypeScript">
-          <TypeScript class="size-3" />
+        <Badge title="CSS">
+          <CSS class="size-3" />
         </Badge>
         <Badge title="Astro">
           <AstroIcon class="size-3" />
@@ -59,6 +59,9 @@ const { title, description, imgUrl } = Astro.props;
         </Badge>
         <Badge title="TypeScript">
           <TypeScript class="size-3" />
+        </Badge>
+        <Badge title="Git">
+          <Git class="size-3" />
         </Badge>
       </div>
     </div>

@@ -1,0 +1,17 @@
+<span
+  class="highlight relative inline-flex font-semibold text-accent-dark dark:text-accent-light"
+  ><slot /></span
+>
+
+<style>
+  .highlight::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 0.25rem;
+    inset-inline: 0;
+    background-color: hsl(var(--accent) / 0.5);
+    height: 0.25rem;
+    border-radius: 0.25rem;
+  }
+</style>
