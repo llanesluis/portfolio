@@ -11,7 +11,7 @@ import Highlight from "../global/Highlight.astro";
     <GradientText>About Me</GradientText>
   </SectionHeading>
 
-  <article class="info py-8">
+  <article class="info relative isolate py-8">
     <div class="prose dark:prose-invert">
       <p>
         My name is Luis Llanes, I'm a Software Engineering student interested in
@@ -39,27 +39,30 @@ import Highlight from "../global/Highlight.astro";
     display: grid;
     gap: 0.5rem;
     align-items: center;
+  }
+
+  .avatar {
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+    right: -38px;
+  }
+
+  @media (min-width: 768px) {
+    .info {
+      grid-template-columns: 2fr 1fr;
+    }
 
     .avatar {
-      z-index: -1;
-      transition: all 0.3s ease-in-out;
-      right: -38px;
+      position: absolute;
+      scale: 0.8;
+      margin-right: -24px;
     }
-    @media screen and (min-width: 768px) {
-      grid-template-columns: 2fr 1fr;
+  }
 
-      .avatar {
-        position: absolute;
-        scale: 0.8;
-        margin-right: -24px;
-      }
-    }
-
-    @media screen and (min-width: 1024px) {
-      .avatar {
-        margin-right: 0px;
-        scale: 1;
-      }
+  @media (min-width: 1024px) {
+    .avatar {
+      margin-right: 0px;
+      scale: 1;
     }
   }
 </style>

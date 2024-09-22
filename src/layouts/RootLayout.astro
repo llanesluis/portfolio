@@ -31,7 +31,7 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
     <ViewTransitions />
   </head>
 
-  <body class="relative flex min-h-screen flex-col">
+  <body class="relative flex min-h-screen flex-col overflow-x-hidden">
     <div class="grow">
       <slot />
     </div>
@@ -122,8 +122,8 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
   }
 
   main::before {
-    content: "";
     position: absolute;
+    content: "";
     top: -50px;
     left: -50px;
     right: -50px;
