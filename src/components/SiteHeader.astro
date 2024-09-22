@@ -1,13 +1,11 @@
 ---
-import ExternalLink from "./global/ExternalLink.astro";
 import GlassContainer from "./global/GlassContainer.astro";
 import AboutMe from "./icons/AboutMe.astro";
 import Briefcase from "./icons/Briefcase.astro";
 import Code from "./icons/Code.astro";
-import GitHub from "./icons/GitHub.astro";
-import LinkedIn from "./icons/LinkedIn.astro";
 import Mail from "./icons/Mail.astro";
 import Links from "./Links.astro";
+import LinksWithIcon from "./LinksWithIcon.astro";
 
 const navItems = [
   // {
@@ -101,17 +99,8 @@ const navItems = [
       <Links />
     </div>
 
-    <div class="flex gap-1 md:hidden">
-      <ExternalLink
-        href="https://www.linkedin.com/in/llanesluis/"
-        class="font-semibold opacity-90 transition"
-        icon><LinkedIn /></ExternalLink
-      >
-      <ExternalLink
-        href="https://github.com/llanesluis"
-        class="font-semibold opacity-90 transition"
-        icon><GitHub /></ExternalLink
-      >
+    <div class="flex gap-2 md:hidden">
+      <LinksWithIcon />
     </div>
   </header>
 </GlassContainer>

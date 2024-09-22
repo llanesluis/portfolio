@@ -9,6 +9,7 @@ import LinkedIn from "../icons/LinkedIn.astro";
 import Mail from "../icons/Mail.astro";
 import Highlight from "../global/Highlight.astro";
 import Section from "../global/Section.astro";
+import { SOCIALS } from "../../constants/socials";
 ---
 
 <section
@@ -42,22 +43,20 @@ import Section from "../global/Section.astro";
       </div>
 
       <div class="flex gap-4">
-        <ExternalLink
-          href="https://www.linkedin.com/in/llanesluis/"
-          title={"LinkedIn"}
+        <ExternalLink href={SOCIALS.linkedin} title={"LinkedIn"}
           ><GlassContainer
             class="group flex items-center gap-2 rounded-full px-4 py-2 text-foreground transition hover:bg-accent-light active:scale-95 dark:hover:bg-accent-dark"
             ><LinkedIn class="size-4" /> LinkedIn</GlassContainer
           ></ExternalLink
         >
 
-        <ExternalLink href="https://github.com/llanesluis" title={"GitHub"}
+        <ExternalLink href={SOCIALS.github} title={"GitHub"}
           ><GlassContainer
             class="group flex items-center gap-2 rounded-full px-4 py-2 text-foreground transition hover:bg-accent-light active:scale-95 dark:hover:bg-accent-dark"
             ><GitHub class="size-4" /> GitHub</GlassContainer
           ></ExternalLink
         >
-        <ExternalLink href="mailto:luisllaboj@gmail.com" title={"Email"}
+        <ExternalLink href={SOCIALS.email} title={"Email"}
           ><GlassContainer
             class="group flex items-center gap-2 rounded-full px-4 py-2 text-foreground transition hover:bg-accent-light active:scale-95 dark:hover:bg-accent-dark"
             ><Mail class="size-4" /></GlassContainer

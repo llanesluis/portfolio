@@ -1,0 +1,17 @@
+---
+import { SOCIALS } from "../constants/socials";
+import ExternalLink from "./global/ExternalLink.astro";
+import GitHub from "./icons/GitHub.astro";
+import LinkedIn from "./icons/LinkedIn.astro";
+---
+
+<ExternalLink
+  href={SOCIALS.linkedin}
+  class="font-semibold opacity-90 transition"
+  icon><LinkedIn /></ExternalLink
+>
+<ExternalLink
+  href={SOCIALS.github}
+  class="font-semibold opacity-90 transition"
+  icon><GitHub /></ExternalLink
+>

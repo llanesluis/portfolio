@@ -1,15 +1,16 @@
 ---
+import { SOCIALS } from "../constants/socials";
 import ExternalLink from "./global/ExternalLink.astro";
 ---
 
 <div class="flex gap-4">
   <ExternalLink
-    href="https://www.linkedin.com/in/llanesluis/"
+    href={SOCIALS.linkedin}
     class="font-semibold opacity-90 transition"
     icon>LinkedIn</ExternalLink
   >
   <ExternalLink
-    href="https://github.com/llanesluis"
+    href={SOCIALS.github}
     class="font-semibold opacity-90 transition"
     icon>GitHub</ExternalLink
   >
