@@ -11,7 +11,7 @@ import Highlight from "../global/Highlight.astro";
     <GradientText>About Me</GradientText>
   </SectionHeading>
 
-  <article class="info">
+  <article class="info py-8">
     <div class="prose dark:prose-invert">
       <p>
         My name is Luis Llanes, I'm a Software Engineering student interested in
@@ -28,7 +28,9 @@ import Highlight from "../global/Highlight.astro";
       </p>
     </div>
 
-    <div class="avatar mx-auto"><Avatar /></div>
+    <div class="avatar mx-auto size-fit overflow-hidden rounded-full">
+      <Avatar />
+    </div>
   </article>
 </Section>
 

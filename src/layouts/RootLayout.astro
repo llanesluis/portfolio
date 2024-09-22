@@ -5,6 +5,7 @@ import Noise from "../components/global/Noise.astro";
 import ScreenHelpers from "../components/helpers/ScreenHelpers.astro";
 import ThemeControl from "../components/global/ThemeControl.astro";
 import ScrollProgressBar from "../components/global/ScrollProgressBar.astro";
+import BottomPageEffect from "../components/global/BottomPageEffect.astro";
 
 interface Props {
   title: string;
@@ -39,6 +40,7 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
 
     <Noise />
     <ScrollProgressBar />
+    <BottomPageEffect />
     <ThemeControl />
     <ScreenHelpers />
   </body>
@@ -150,7 +152,7 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
     height: 100%;
     z-index: -100;
 
-    background-color: hsl(var(--background));
+    /* background-color: hsl(var(--background)); */
   }
   code {
     font-family:
