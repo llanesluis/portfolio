@@ -7,6 +7,9 @@ import ThemeControl from "../components/global/ThemeControl.astro";
 import ScrollProgressBar from "../components/global/ScrollProgressBar.astro";
 import BottomPageEffect from "../components/global/BottomPageEffect.astro";
 
+import "@fontsource-variable/onest";
+import "@fontsource-variable/jetbrains-mono";
+
 interface Props {
   title: string;
   description?: string;
@@ -49,6 +52,9 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
 <style is:global>
   :root {
     color-scheme: light dark;
+
+    --font-accent: "Onest Variable";
+    --font-mono: "JetBrains Mono Variable";
 
     --background: 0 0% 95%;
     --foreground: 0 0% 3%;

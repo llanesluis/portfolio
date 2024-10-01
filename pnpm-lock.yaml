@@ -17,6 +17,9 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.1
         version: 5.1.1(astro@4.15.8(rollup@4.21.2)(typescript@5.5.4))(tailwindcss@3.4.10)
+      '@fontsource-variable/jetbrains-mono':
+        specifier: ^5.1.0
+        version: 5.1.0
       '@fontsource-variable/onest':
         specifier: ^5.0.5
         version: 5.0.5
@@ -395,6 +398,9 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource-variable/jetbrains-mono@5.1.0':
+    resolution: {integrity: sha512-Hk2HCSep+EmX6nSPNTS3goN0V0TOigdVWcGdnxTVIZIa89HtZAe/zhzFEM1iBXrBShilPwKEdjANHa5plSi38A==}
 
   '@fontsource-variable/onest@5.0.5':
     resolution: {integrity: sha512-uI85/JuJ/ywLhIg6KiWdK8Jto6b7nV5nXzIc8tN15Q+DTAR8MsryUntSnLIhcK9wcKCggMfq8Ug68V8NCazrMg==}
@@ -2795,6 +2801,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.5':
     optional: true
+
+  '@fontsource-variable/jetbrains-mono@5.1.0': {}
 
   '@fontsource-variable/onest@5.0.5': {}
 

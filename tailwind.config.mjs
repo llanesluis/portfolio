@@ -20,7 +20,9 @@ export default {
         },
       },
       fontFamily: {
-        onest: ["Onest Variable", ...defaultTheme.fontFamily.sans],
+        accent: ["var(--font-accent)", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-sans)", ...defaultTheme.fontFamily.sans],
+        mono: ["var(--font-mono)", ...defaultTheme.fontFamily.mono],
       },
       boxShadow: () => ({
         // inspired by https://www.joshwcomeau.com/shadow-palette/
