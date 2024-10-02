@@ -11,33 +11,42 @@ import AstroIcon from "./icons/AstroIcon.astro";
 import ReactQuery from "./icons/ReactQuery.astro";
 import Git from "./icons/Git.astro";
 import CSharp from "./icons/CSharp.astro";
-import GlassContainer from "./global/GlassContainer.astro";
 ---
 
 <div
   class="relative grid grid-flow-col place-items-center items-center gap-4 text-center max-md:grid-rows-2"
   id="tech"
 >
-  <HTML class="size-10 shrink-0 grayscale hover:grayscale-0 max-sm:size-8" />
-  <CSS class="size-10 shrink-0 grayscale hover:grayscale-0 max-sm:size-8" />
-  <React class="size-10 shrink-0 grayscale hover:grayscale-0 max-sm:size-8" />
-  <Nextjs class="size-10 shrink-0 grayscale hover:grayscale-0 max-sm:size-8" />
-  <TypeScript
-    class="size-10 shrink-0 grayscale hover:grayscale-0 max-sm:size-8"
-  />
-  <Tailwind
-    class="size-10 shrink-0 grayscale hover:grayscale-0 max-sm:size-8"
-  />
-  <Nodejs class="size-10 shrink-0 grayscale hover:grayscale-0 max-sm:size-8" />
-  <Expressjs
-    class="size-10 shrink-0 grayscale hover:grayscale-0 max-sm:size-8"
-  />
-  <AstroIcon
-    class="size-10 shrink-0 grayscale hover:grayscale-0 max-sm:size-8"
-  />
-  <ReactQuery
-    class="size-10 shrink-0 grayscale hover:grayscale-0 max-sm:size-8"
-  />
-  <Git class="size-10 shrink-0 grayscale hover:grayscale-0 max-sm:size-8" />
-  <CSharp class="size-10 shrink-0 grayscale hover:grayscale-0 max-sm:size-8" />
+  <HTML class="filter-blur size-10 shrink-0 max-sm:size-8" />
+  <CSS class="filter-blur size-10 shrink-0 max-sm:size-8" />
+  <React class="filter-blur size-10 shrink-0 max-sm:size-8" />
+  <Nextjs class="filter-blur size-10 shrink-0 max-sm:size-8" />
+  <TypeScript class="filter-blur size-10 shrink-0 max-sm:size-8" />
+  <Tailwind class="filter-blur size-10 shrink-0 max-sm:size-8" />
+  <Nodejs class="filter-blur size-10 shrink-0 max-sm:size-8" />
+  <Expressjs class="filter-blur size-10 shrink-0 max-sm:size-8" />
+  <AstroIcon class="filter-blur size-10 shrink-0 max-sm:size-8" />
+  <ReactQuery class="filter-blur size-10 shrink-0 max-sm:size-8" />
+  <Git class="filter-blur size-10 shrink-0 max-sm:size-8" />
+  <CSharp class="filter-blur size-10 shrink-0 max-sm:size-8" />
 </div>
+
+<!-- Truco para aplicar el filtro a cualquier elemento del DOM que tenga la clase filter-blur -->
+<svg width="0" height="0" aria-hidden="true">
+  <filter id="blur" y="-50%" x="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blurred"
+    ></feGaussianBlur>
+
+    <feColorMatrix in="blurred" type="saturate" values="3"></feColorMatrix>
+
+    <feComposite in="SourceGraphic" operator="over"></feComposite>
+  </filter>
+</svg>
+
+<style>
+  .filter-blur {
+    &:hover {
+      filter: url(#blur);
+    }
+  }
+</style>
