@@ -27,18 +27,18 @@ export default function ContactForm() {
       if (!res.success) return;
 
       setStatus("success");
-      setSubmitText(res.message);
+      setSubmitText(res.message.toLowerCase());
       target.reset();
     } catch (error) {
       setStatus("error");
 
       if (isInputError(error)) {
         console.log(error.fields);
-        setSubmitText("Invalid inputs!");
+        setSubmitText("invalid inputs");
         return;
       }
 
-      setSubmitText("Something went wrong!");
+      setSubmitText("something went wrong");
     } finally {
       setTimeout(() => {
         setStatus(null);
@@ -65,8 +65,8 @@ export default function ContactForm() {
       {submitText && (
         <span
           className={cn(
-            "font-mono text-sm font-semibold text-muted-foreground",
-            "absolute -top-2 right-8",
+            "font-mono text-sm font-semibold text-muted-foreground max-sm:text-xs",
+            "absolute -top-2 right-6 max-sm:-top-1",
             status === "success" && "text-green-600",
             status === "error" && "text-red-600",
           )}
