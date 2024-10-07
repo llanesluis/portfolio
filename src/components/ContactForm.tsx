@@ -1,6 +1,7 @@
 import { actions, isInputError } from "astro:actions";
 import { cn } from "../lib/utils";
 import { useState } from "react";
+import Spinner from "./icons/Spinner";
 
 // Estoy llamando la accion desde el cliente porque para hacerlo desde
 // la prop "action" del formulario necesito configurar el output de astro a "server"
@@ -33,11 +34,11 @@ export default function ContactForm() {
 
       if (isInputError(error)) {
         console.log(error.fields);
-        setSubmitText("🤨 Invalid inputs!");
+        setSubmitText("Invalid inputs!");
         return;
       }
 
-      setSubmitText("😭 Something went wrong!");
+      setSubmitText("Something went wrong!");
     } finally {
       setTimeout(() => {
         setStatus(null);
@@ -56,10 +57,23 @@ export default function ContactForm() {
         className={cn(
           "absolute right-0 top-0 size-2 animate-bounce rounded-full bg-accent",
           "transition-all duration-300",
-          status === "success" && "size-4 bg-green-500",
-          status === "error" && "size-4 bg-red-500",
+          status === "success" && "size-4 bg-green-600",
+          status === "error" && "size-4 bg-red-600",
         )}
       ></span>
+
+      {submitText && (
+        <span
+          className={cn(
+            "font-mono text-sm font-semibold text-muted-foreground",
+            "absolute -top-2 right-8",
+            status === "success" && "text-green-600",
+            status === "error" && "text-red-600",
+          )}
+        >
+          {submitText}
+        </span>
+      )}
 
       <div className="grid gap-2">
         <label> Email </label>
@@ -78,21 +92,25 @@ export default function ContactForm() {
         ></textarea>
       </div>
 
-      <button disabled={status === "loading" || status === "success"}>
-        Get in touch
-      </button>
-
-      {submitText && (
+      <button
+        disabled={status === "loading" || status === "success"}
+        className="relative"
+      >
         <span
           className={cn(
-            "mx-auto text-center text-sm font-semibold text-muted-foreground",
-            status === "success" && "text-green-500/70",
-            status === "error" && "text-red-500/70",
+            "transition duration-150",
+            status === "loading" && "opacity-0",
           )}
         >
-          {submitText}
+          Get in touch
         </span>
-      )}
+
+        {status === "loading" && (
+          <span className="absolute inset-0 flex items-center justify-center">
+            <Spinner />
+          </span>
+        )}
+      </button>
     </form>
   );
 }
