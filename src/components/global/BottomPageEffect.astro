@@ -1,8 +1,32 @@
-<div
-  class:list={[
-    "pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[200vh]",
-    "bg-[linear-gradient(to_right,hsl(var(--accent)/15%)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--accent)/15%)_1px,transparent_1px)]",
-    "bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_100%,#000_80%,transparent_100%)]",
-  ]}
->
-</div>
+<div class="grid-background"></div>
+
+<style>
+  .grid-background {
+    --bg-height: 90vh;
+
+    position: absolute;
+    height: var(--bg-height);
+    pointer-events: none;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: -1;
+
+    background-size: 8px 8px;
+    background-image: linear-gradient(
+        to right,
+        hsl(var(--accent) / 15%) 1px,
+        transparent 1px
+      ),
+      linear-gradient(hsl(var(--accent) / 15%) 1px, transparent 1px);
+
+    mask-image: radial-gradient(
+      ellipse 100% 100% at 50% 100%,
+      #000 60%,
+      transparent 100%
+    );
+
+    @media (min-width: 1024px) {
+      --bg-height: 100vh;
+    }
+  }
+</style>

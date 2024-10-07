@@ -1,0 +1,14 @@
+// URL DEL GOOGLE FORM VACIO
+
+https://docs.google.com/forms/d/e/xxxxxxxxxx_xx-xxxxxxxxxx_xxxxxxxxxx_x/viewform?usp=pp_url
+
+
+// URL DEL GOOGLE FORM CON DATOS
+
+https://docs.google.com/forms/d/e/xxxxxxxxxx_xx-xxxxxxxxxx_xxxxxxxxxx_x/viewform?usp=pp_url&entry.xxxxxxxxxx=luisllaboj@gmail.com&entry.xxxxxxxxxx=XDD
+
+
+// URL DEL GOOGLE FORM CON DATOS HABILITADO PARA HACER SUBMIT DESDE UNA PÁGINA WEB PERSONALIZADA
+// "formResponse?submit=Submit&" en lugar de "viewform?"
+
+https://docs.google.com/forms/d/e/xxxxxxxxxx_xx-xxxxxxxxxx_xxxxxxxxxx_x/formResponse?submit=Submit&usp=pp_url&entry.xxxxxxxxxx=luisllaboj@gmail.com&entry.xxxxxxxxxx=XDD

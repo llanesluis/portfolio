@@ -5,8 +5,8 @@ import GradientText from "../global/GradientText.astro";
 import Section from "../global/Section.astro";
 import SectionHeading from "../global/SectionHeading.astro";
 import LinkedIn from "../icons/LinkedIn.astro";
-import Mail from "../icons/Mail.astro";
 import { SOCIALS } from "../../constants/socials";
+import ContactForm from "../ContactForm";
 ---
 
 <Section id="contact-me">
@@ -15,25 +15,8 @@ import { SOCIALS } from "../../constants/socials";
   </SectionHeading>
 
   <div class="contact-section">
-    <GlassContainer class="w-full rounded-2xl p-6"
-      ><form class="contact-form font-onest">
-        <span
-          class="absolute right-0 top-0 size-3 animate-bounce rounded-full bg-accent"
-        ></span>
-        <div class="grid gap-2">
-          <label> Email </label>
-          <input type="email" name="email" placeholder="luisllaboj@gmail.com" />
-        </div>
-
-        <div class="grid gap-2">
-          <label> Message </label>
-          <textarea name="message" placeholder="I would like to discuss..."
-          ></textarea>
-        </div>
-
-        <button type="button">Get in touch<Mail /> </button>
-      </form>
-
+    <GlassContainer class="trans w-full rounded-2xl p-6">
+      <ContactForm client:idle />
       <div
         class="mt-4 flex items-center justify-center gap-2 border-t border-foreground/10 pt-4 text-muted-foreground max-md:order-1"
       >
@@ -65,7 +48,8 @@ import { SOCIALS } from "../../constants/socials";
       background-color: transparent;
       outline: hsl(var(--accent) / 20%) 2px solid;
       border-radius: 1rem;
-      padding: 0.5rem;
+      padding-block: 0.5rem;
+      padding-inline: 1rem;
 
       &:focus,
       &:focus-visible,
@@ -102,6 +86,12 @@ import { SOCIALS } from "../../constants/socials";
 
       &:active {
         transform: scale(0.97);
+      }
+
+      &[disabled] {
+        background-color: hsl(var(--muted));
+        opacity: 0.5;
+        pointer-events: none;
       }
     }
   }
