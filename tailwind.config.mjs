@@ -74,11 +74,23 @@ export default {
             transform: "translate3d(0, 0, 0)",
           },
         },
+        "move-up-and-down": {
+          "0%": {
+            transform: "translateY(0)",
+          },
+          "50%": {
+            transform: "translateY(-20px)",
+          },
+          "100%": {
+            transform: "translateY(0)",
+          },
+        },
       },
       animation: {
         fadein: "fade-in 1s ease-in-out 0.25s 1",
         fadeout: "fade-out 1s ease-out 0.25s 1",
         fadeindown: "fade-in-down 1s ease-in 0.25s 1",
+        "move-up-and-down": "move-up-and-down 5s linear infinite",
       },
     },
   },
