@@ -10,6 +10,7 @@ import Mail from "../icons/Mail.astro";
 import Highlight from "../global/Highlight.astro";
 import Section from "../global/Section.astro";
 import { SOCIALS } from "../../constants/socials";
+import TagCodeBlock from "../TagCodeBlock";
 ---
 
 <section
@@ -21,52 +22,46 @@ import { SOCIALS } from "../../constants/socials";
 
 <Section class="font-accent" id="hero">
   <div id="intersection">
-    <header
-      id="header"
-      class="flex flex-col gap-8 transition duration-150 will-change-transform"
-    >
-      <h1 class="text-7xl font-bold max-md:text-6xl">
-        hi, i'm <GradientText>luis</GradientText>
-      </h1>
+    <header id="header" class="transition duration-150 will-change-transform">
+      <TagCodeBlock label="AboutMe" client:load>
+        <div class="flex flex-col gap-8">
+          <h1 class="text-7xl font-bold max-md:text-6xl">
+            hi, i'm <GradientText>luis</GradientText>
+          </h1>
 
-      <div class="flex flex-col gap-2">
-        <h2 class="text-xl">
-          I'm a Software Engineer & <Highlight
-            >FullStack Web Developer</Highlight
-          >
-        </h2>
+          <div class="flex flex-col gap-2">
+            <h2 class="text-xl">
+              I'm a Software Engineer & <Highlight
+                >FullStack Web Developer</Highlight
+              >
+            </h2>
 
-        <p class="text-muted-foreground">
-          <Highlight class="font-semibold text-accent">1.5+</Highlight> years building
-          with web technologies. Continuously evolving and learning new stuff.
-        </p>
-      </div>
+            <p class="text-muted-foreground">
+              <Highlight class="font-semibold text-accent">1.5+</Highlight> years
+              building with web technologies. Continuously evolving and learning
+              new stuff.
+            </p>
+          </div>
 
-      <div class="flex gap-4">
-        <ExternalLink href={SOCIALS.linkedin} title={"LinkedIn"}
-          ><GlassContainer
-            class="group flex items-center gap-2 rounded-full px-4 py-2 text-foreground transition hover:bg-accent-light active:scale-95 dark:hover:bg-accent-dark"
-            ><LinkedIn class="size-4" /> LinkedIn</GlassContainer
-          ></ExternalLink
-        >
+          <nav class="flex items-center gap-4">
+            <ExternalLink href={SOCIALS.linkedin} title={"LinkedIn"}>
+              <LinkedIn class="size-6" />
+            </ExternalLink>
 
-        <ExternalLink href={SOCIALS.github} title={"GitHub"}
-          ><GlassContainer
-            class="group flex items-center gap-2 rounded-full px-4 py-2 text-foreground transition hover:bg-accent-light active:scale-95 dark:hover:bg-accent-dark"
-            ><GitHub class="size-4" /> GitHub</GlassContainer
-          ></ExternalLink
-        >
-        <ExternalLink href={SOCIALS.email} title={"Email"}
-          ><GlassContainer
-            class="group flex items-center gap-2 rounded-full px-4 py-2 text-foreground transition hover:bg-accent-light active:scale-95 dark:hover:bg-accent-dark"
-            ><Mail class="size-4" /></GlassContainer
-          >
-        </ExternalLink>
-      </div>
+            <ExternalLink href={SOCIALS.github} title={"GitHub"}>
+              <GitHub class="size-6" />
+            </ExternalLink>
 
-      <div class="relative w-full pt-12">
-        <Technologies />
-      </div>
+            <ExternalLink href={SOCIALS.email} title={"Email"}>
+              <Mail class="size-4" />
+            </ExternalLink>
+          </nav>
+        </div>
+
+        <div class="relative w-full pt-12">
+          <Technologies />
+        </div>
+      </TagCodeBlock>
     </header>
   </div>
 </Section>
