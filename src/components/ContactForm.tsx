@@ -43,37 +43,41 @@ export default function ContactForm() {
       setTimeout(() => {
         setStatus(null);
         setSubmitText(null);
-      }, 3000);
+      }, 2000);
     }
   };
 
   return (
     <form
-      className="contact-form font-onest"
+      className="contact-form font-onest py-6"
       id="contact-form"
       onSubmit={handleSubmit}
     >
-      <span
+      <div
         className={cn(
           "absolute right-0 top-0 size-2 animate-bounce rounded-full bg-accent",
-          "transition-all duration-300",
-          status === "success" && "size-4 bg-green-600",
-          status === "error" && "size-4 bg-red-600",
+          "overflow-hidden transition-all duration-300",
+          "flex items-center justify-center",
+          status === "success" &&
+            "size-5 w-60 animate-none bg-green-500/20 max-sm:w-52",
+          status === "error" &&
+            "size-5 w-40 animate-none bg-red-500/20 max-sm:w-36",
         )}
-      ></span>
-
-      {submitText && (
-        <span
-          className={cn(
-            "font-mono text-sm font-semibold text-muted-foreground max-sm:text-xs",
-            "absolute -top-2 right-6 max-sm:-top-1",
-            status === "success" && "text-green-600",
-            status === "error" && "text-red-600",
-          )}
-        >
-          {submitText}
-        </span>
-      )}
+      >
+        {submitText && (
+          <span
+            className={cn(
+              "absolute w-full text-center font-mono font-semibold",
+              "text-nowrap text-sm max-sm:text-xs",
+              "opacity-0 transition",
+              status === "success" && "text-green-500 opacity-100",
+              status === "error" && "text-red-500 opacity-100",
+            )}
+          >
+            {submitText}
+          </span>
+        )}
+      </div>
 
       <div className="grid gap-2">
         <label> Email </label>
@@ -92,10 +96,7 @@ export default function ContactForm() {
         ></textarea>
       </div>
 
-      <button
-        disabled={status === "loading" || status === "success"}
-        className="relative"
-      >
+      <button disabled={!!status} className="relative">
         <span
           className={cn(
             "transition duration-150",
