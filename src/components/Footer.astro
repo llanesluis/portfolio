@@ -1,18 +1,33 @@
 ---
 import Container from "./global/Container.astro";
+import ExternalLink from "./global/ExternalLink.astro";
+import AstroIcon from "./icons/AstroIcon.astro";
 import Links from "./Links.astro";
 ---
 
 <footer class="bg-background py-12" transition:name="footer">
-  <Container class="flex justify-between py-4">
-    <div>
-      <span id="currentDate" class="font-accent"></span>
-      <span class="font-accent font-semibold">
-        luis<span class="text-accent">llaboj</span></span
-      >
+  <Container class="grid gap-2">
+    <div class="flex justify-between">
+      <div>
+        <span id="currentDate" class="font-accent"></span>
+        <span class="font-accent font-semibold">
+          luis<span class="text-accent">llaboj</span></span
+        >
+      </div>
+      <Links />
     </div>
 
-    <Links />
+    <p class="text-muted-foreground">
+      This portfolio was built with
+      <ExternalLink href="https://astro.build" icon> Astro </ExternalLink>
+    </p>
+
+    <ExternalLink
+      href="https://github.com/llanesluis/portfolio"
+      icon
+      class="text-muted-foreground"
+      >View source code
+    </ExternalLink>
   </Container>
 </footer>
 

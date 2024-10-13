@@ -1,0 +1,29 @@
+<div class="grid-background-top"></div>
+
+<style>
+  .grid-background-top {
+    --bg-height: 100vh;
+    --bg-size: 48px;
+
+    position: absolute;
+    height: var(--bg-height);
+    pointer-events: none;
+    inset-inline: 0;
+    top: 0;
+    z-index: -1;
+
+    background-size: var(--bg-size) var(--bg-size);
+    background-image: linear-gradient(
+        to right,
+        hsl(var(--foreground) / 3%) 2px,
+        transparent 2px
+      ),
+      linear-gradient(hsl(var(--foreground) / 3%) 2px, transparent 2px);
+
+    mask-image: radial-gradient(
+      ellipse 100% 100% at 50% 0%,
+      #000 30%,
+      transparent 100%
+    );
+  }
+</style>
