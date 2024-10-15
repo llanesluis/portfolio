@@ -42,7 +42,7 @@ export default function TagCodeBlock({ children, label }: SectionWrapperProps) {
       <div
         className={cn(
           "overflow-hidden transition",
-          isOpen ? "py-8 pl-8" : "h-0 opacity-0",
+          isOpen ? "py-8 pl-8" : "h-0",
         )}
       >
         {children}
