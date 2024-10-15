@@ -1,69 +1,119 @@
 ---
+import { TECHNOLOGIES, type TechnologyLabel } from "../constants/technologies";
 import Badge from "./Badge.astro";
-import AstroIcon from "./icons/AstroIcon.astro";
-import CSS from "./icons/CSS.astro";
-import Git from "./icons/Git.astro";
-import HTML from "./icons/HTML.astro";
-import Tailwind from "./icons/Tailwind.astro";
-import TypeScript from "./icons/TypeScript.astro";
+import BottomPageEffect from "./global/BottomPageEffect.astro";
 
 interface Props {
   title: string;
   description: string;
   imgUrl?: string;
+  techStack: TechnologyLabel[];
 }
 
-const { title, description, imgUrl } = Astro.props;
+const { title, description, imgUrl, techStack } = Astro.props;
 ---
 
-<article class="py-8 max-sm:-mx-6">
-  <div class="group/parent flex flex-col gap-4 md:flex-row">
+<article class="py-8">
+  <div class="group/parent project-container size-full">
     <div
       class:list={[
-        "group relative aspect-video max-h-[250px] w-full shrink-0 rounded-xl shadow-surface-glass",
-        "bg-gradient-to-br from-accent-dark to-accent-light",
-        "max-sm:rounded-none md:w-1/2",
-        "overflow-hidden bg-clip-padding",
+        "project-img",
+        "group rounded-2xl shadow-surface-glass",
+        "bg-gradient-to-tr from-muted-foreground/10 to-accent/10",
       ]}
     >
       <img
         src={imgUrl ?? "/projects/placeholder.webp"}
         alt={`${title}`}
         class:list={[
-          "absolute translate-y-6 rounded-xl object-cover transition duration-300 ease-in-out group-hover/parent:scale-105 md:translate-x-6",
-          "sm:translate-x-14",
-          "max-sm:m-0 max-sm:translate-x-0 max-sm:rounded-none",
+          "shadow-lg",
+          "max-md:group-hover/parent:scale-105",
+          "md:translate-x-12 md:translate-y-6 md:rounded-t-xl",
+          "md:group-hover/parent:translate-x-4 md:group-hover/parent:translate-y-0",
           !imgUrl && "opacity-60",
         ]}
       />
+
+      <div class="size-full"><BottomPageEffect /></div>
     </div>
 
-    <div class="prose dark:prose-invert space-y-4 max-sm:mx-6">
-      <h3>{title}</h3>
-      <p>
+    <div
+      class:list={[
+        "project-details",
+        "prose rounded-xl dark:prose-invert",
+        "md:bg-muted/70 md:p-4 md:ring-1 md:ring-accent-dark/20 md:backdrop-blur-md",
+        "md:shadow-surface-glass md:transition-shadow md:duration-200",
+      ]}
+    >
+      <h3 class="font-accent text-accent-dark dark:text-accent-light">
+        {title}
+      </h3>
+      <p class="text-foreground">
         {description}
       </p>
 
       <div class="flex flex-wrap gap-2">
-        <Badge title="HTML">
-          <HTML class="size-3" />
-        </Badge>
-        <Badge title="CSS">
-          <CSS class="size-3" />
-        </Badge>
-        <Badge title="Astro">
-          <AstroIcon class="size-3" />
-        </Badge>
-        <Badge title="TailwindCSS">
-          <Tailwind class="size-3" />
-        </Badge>
-        <Badge title="TypeScript">
-          <TypeScript class="size-3" />
-        </Badge>
-        <Badge title="Git">
-          <Git class="size-3" />
-        </Badge>
+        {
+          techStack.map((_tech) => {
+            const tech = TECHNOLOGIES.find((t) => t.label === _tech);
+
+            if (!tech) return;
+
+            const label = tech.label;
+            const Component = tech.Component;
+
+            return (
+              <Badge title={label}>
+                <Component class="size-3" />
+              </Badge>
+            );
+          })
+        }
       </div>
     </div>
   </div>
 </article>
+
+<style>
+  .project-container {
+    display: grid;
+
+    grid-template-areas:
+      "img"
+      "details";
+
+    gap: 24px;
+
+    @media (min-width: 768px) {
+      grid-template-areas: none;
+
+      grid-template-columns: [img-start] 1fr 1fr 1fr 1fr 1fr [details-start] 1fr 1fr 1fr [img-end] 1fr [details-end];
+      grid-template-rows: [img-start] 1fr 1fr [details-start] 1fr 1fr 1fr 1fr 1fr [img-end] 1fr [details-end];
+      align-items: end;
+    }
+  }
+
+  .project-img {
+    position: relative;
+    isolation: isolate;
+    grid-area: img;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+
+    img {
+      size: 100%;
+
+      position: absolute;
+      bottom: 0;
+      object-fit: cover;
+      transition: all;
+      transition-duration: 0.2s;
+      transition-timing-function: ease-in-out;
+    }
+  }
+
+  .project-details {
+    grid-area: details;
+    z-index: 1;
+  }
+</style>

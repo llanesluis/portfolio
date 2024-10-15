@@ -3,6 +3,7 @@ import GradientText from "../global/GradientText.astro";
 import Section from "../global/Section.astro";
 import SectionHeading from "../global/SectionHeading.astro";
 import Project from "../Project.astro";
+import { PROJECTS } from "../../constants/projects";
 ---
 
 <Section id="projects">
@@ -10,19 +11,14 @@ import Project from "../Project.astro";
     <GradientText class:list={["text-accent"]}>Projects</GradientText>
   </SectionHeading>
 
-  <Project
-    title="Project One"
-    description="Lorem ipsum dolor sit amet"
-    imgUrl="/projects/portfolio.webp"
-  />
-  <Project
-    title="Project Two"
-    description="  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, esse excepturi reiciendis non aspernatur assumenda blanditiis?"
-    imgUrl="/projects/portfolio.webp"
-  />
-
-  <Project
-    title="Project Three"
-    description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam doloremque ut, quaerat sapiente officiis eligendi qui dolore excepturi! Odit aspernatur esse neque?"
-  />
+  {
+    PROJECTS.map((project) => (
+      <Project
+        title={project.title}
+        description={project.description}
+        imgUrl={project.imgUrl}
+        techStack={project.techStack}
+      />
+    ))
+  }
 </Section>
