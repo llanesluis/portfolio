@@ -4,6 +4,7 @@ import SectionHeading from "../global/SectionHeading.astro";
 import Avatar from "../Avatar.astro";
 import Section from "../global/Section.astro";
 import Highlight from "../global/Highlight.astro";
+import TagCodeBlock from "../TagCodeBlock";
 ---
 
 <Section id="about-me">
@@ -14,18 +15,21 @@ import Highlight from "../global/Highlight.astro";
   <article class="info relative isolate py-8">
     <div class="prose dark:prose-invert">
       <p>
-        My name is Luis Llanes, I'm a Software Engineering student interested in
-        web development. With <Highlight>strong common sense</Highlight>,
-        <Highlight>logical thinking</Highlight>, and <Highlight
-          >problem-solving skills</Highlight
-        >, I strive for excellence in everything I do, which drives me to seek
-        high-quality solutions.
+        My name is Luis Llanes, I'm a Software Engineering student mainly
+        interested in
+        <Highlight>front-end</Highlight>web development. With
+        <Highlight>strong common sense,</Highlight>
+        <Highlight>logical thinking,</Highlight> and <Highlight
+          >problem-solving skills,</Highlight
+        > I strive for excellence in everything I do.
       </p>
-      <p>
-        I am looking for challenging opportunities to test my abilities and
-        continue expanding my skills, committed to learning new technologies and
-        frameworks.
-      </p>
+
+      <TagCodeBlock label="Status" className="text-xl" client:idle>
+        <p class="m-0 p-0 text-muted-foreground">
+          Currently looking for challenging opportunities to continue expanding
+          my abilities, committed to learning new technologies and frameworks.
+        </p>
+      </TagCodeBlock>
     </div>
 
     <div class="avatar mx-auto size-fit overflow-hidden rounded-full">
