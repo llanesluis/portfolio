@@ -13,12 +13,9 @@ export default function TagCodeBlock({ children, label }: SectionWrapperProps) {
   return (
     <div
       className={cn(
-        "relative isolate transition duration-75",
-        "before:absolute before:z-10 before:content-['']",
-        "before:top-[32px] before:h-[calc(100%_-32px_-1.875rem)]",
-        "before:border-[1.5px] before:border-l before:border-muted-foreground/50",
-        "hover:before:border-muted-foreground",
-        !isOpen && "rounded-lg bg-muted-foreground/10",
+        "relative isolate origin-top transition-all",
+        "grid grid-rows-[auto_0fr_auto] content-start",
+        isOpen && "grid-rows-[auto_1fr_auto]",
       )}
     >
       <button
@@ -32,28 +29,31 @@ export default function TagCodeBlock({ children, label }: SectionWrapperProps) {
         <Chevron className="text-muted-foreground/50 hover:text-muted-foreground" />
       </button>
 
-      <TextMono text={"<"} className="text-3xl text-muted-foreground/70" />
-      <TextMono
-        className="text-3xl font-semibold text-accent"
-        text={label}
-      ></TextMono>
-      <TextMono text={">"} className="text-3xl text-muted-foreground/70" />
+      <div className={cn(!isOpen && "bg-muted-foreground/10")}>
+        <TextMono text={"<"} className="text-3xl text-muted-foreground/70" />
+        <TextMono className="text-3xl font-semibold text-accent" text={label} />
+        <TextMono
+          text={`[data-status]="availableForWork"`}
+          className="ml-3 hidden text-3xl text-foreground/80 transition-all lg:inline-flex"
+        />
+        <TextMono text={">"} className="text-3xl text-muted-foreground/70" />
+      </div>
 
       <div
         className={cn(
-          "overflow-hidden transition",
-          isOpen ? "py-8 pl-8" : "h-0",
+          "border-l-2 border-muted-foreground/50 pl-8",
+          "overflow-hidden",
+          "hover:border-muted-foreground",
         )}
       >
-        {children}
+        <div className="py-6">{children}</div>
       </div>
 
-      <TextMono text={"</"} className="text-3xl text-muted-foreground/70" />
-      <TextMono
-        className="text-3xl font-semibold text-accent"
-        text={label}
-      ></TextMono>
-      <TextMono text={">"} className="text-3xl text-muted-foreground/70" />
+      <div>
+        <TextMono text={"</"} className="text-3xl text-muted-foreground/70" />
+        <TextMono className="text-3xl font-semibold text-accent" text={label} />
+        <TextMono text={">"} className="text-3xl text-muted-foreground/70" />
+      </div>
     </div>
   );
 }
