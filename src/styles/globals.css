@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+
+  --font-accent: "Onest Variable";
+  --font-mono: "JetBrains Mono Variable";
+
+  --background: 0 0% 95%;
+  --foreground: 0 0% 3%;
+  --muted: 0 0% 91%;
+  --muted-foreground: 0 0% 40%;
+
+  /* Default value must be in sync with the variable defaultAccentHue in ThemeControl.astro */
+  --accent-hue: 210;
+  --accent-saturation: 75%;
+  --accent-lightness: 55%;
+
+  --accent: var(--accent-hue) var(--accent-saturation) var(--accent-lightness);
+  --accent-light: var(--accent-hue) var(--accent-saturation)
+    calc(var(--accent-lightness) + 30%);
+  --accent-dark: var(--accent-hue) var(--accent-saturation)
+    calc(var(--accent-lightness) - 30%);
+
+  --accent-gradient: linear-gradient(
+    45deg,
+    hsl(var(--accent)),
+    hsl(var(--accent-light)) 40%
+  );
+
+  --gradient-background: radial-gradient(
+      37.88% 68.62% at 50% 0,
+      hsl(var(--accent) / 0.2) 0,
+      hsl(var(--accent) / 0) 80%
+    ),
+    radial-gradient(
+      10% 10% at 50% 0,
+      hsl(var(--accent) / 0.5) 0,
+      hsl(var(--accent) / 0.2) 90%,
+      hsl(var(--accent) / 0) 100%
+    ),
+    radial-gradient(
+      100% 28.09% at 100% 10%,
+      hsl(var(--accent) / 0.2) 0,
+      hsl(var(--accent) / 0.05) 80%,
+      hsl(var(--accent) / 0) 100%
+    ),
+    linear-gradient(
+      180deg,
+      hsl(var(--accent) / 0.075) 0,
+      hsl(var(--accent) / 0.05) 70%,
+      hsl(var(--background))
+    ),
+    radial-gradient(
+      74.84% 135.56% at 100% 10%,
+      hsl(var(--accent) / 0.5) 0,
+      hsl(var(--background)) 80%
+    );
+  &.dark {
+    --background: 223 16% 9%;
+    --foreground: 0 0% 95%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+  }
+}
+
+code {
+  font-family:
+    Menlo,
+    Monaco,
+    Lucida Console,
+    Liberation Mono,
+    DejaVu Sans Mono,
+    Bitstream Vera Sans Mono,
+    Courier New,
+    monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p,
+li,
+figcaption {
+  text-wrap: pretty;
+  max-width: 70ch;
+}
+
+header,
+footer,
+main,
+section,
+article {
+  container-type: inline-size;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@layer utilities {
+  .animation-pause {
+    animation-play-state: paused;
+  }
+
+  .animation-run {
+    animation-play-state: running;
+  }
+}

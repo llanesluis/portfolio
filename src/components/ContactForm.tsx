@@ -59,9 +59,9 @@ export default function ContactForm() {
           "overflow-hidden transition-all duration-300",
           "flex items-center justify-center",
           status === "success" &&
-            "size-5 w-60 animate-none bg-green-500/20 max-sm:w-52",
+            "animation-pause size-5 w-60 bg-green-500/20 max-sm:w-52",
           status === "error" &&
-            "size-5 w-40 animate-none bg-red-500/20 max-sm:w-36",
+            "animation-pause size-5 w-40 bg-red-500/20 max-sm:w-36",
         )}
       >
         {submitText && (

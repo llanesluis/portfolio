@@ -5,7 +5,7 @@
     doc.style.setProperty("--accent-hue", `${hue}`);
   };
 
-  // Default value must be in sync with the :root --accent-hue in RootLayout.astro
+  // Default value must be in sync with the :root --accent-hue in styles/globals.css
   const defaultAccentHue = 210;
   let accentHue =
     parseInt(doc.style.getPropertyValue("--accent-hue")) || defaultAccentHue;

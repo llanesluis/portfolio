@@ -6,10 +6,12 @@ import ScreenHelpers from "../components/helpers/ScreenHelpers.astro";
 import ThemeControl from "../components/global/ThemeControl.astro";
 import ScrollProgressBar from "../components/global/ScrollProgressBar.astro";
 import BottomPageEffect from "../components/global/BottomPageEffect.astro";
+import TopPageEffect from "../components/global/TopPageEffect.astro";
 
 import "@fontsource-variable/onest";
 import "@fontsource-variable/jetbrains-mono";
-import TopPageEffect from "../components/global/TopPageEffect.astro";
+
+import "../styles/globals.css";
 
 interface Props {
   title: string;
@@ -35,14 +37,15 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
     <ViewTransitions />
   </head>
 
-  <body class="relative flex min-h-screen flex-col overflow-x-hidden">
+  <body>
     <TopPageEffect />
 
-    <div class="grow">
-      <slot />
+    <div class="grid min-h-screen grid-rows-[1fr_auto]">
+      <main>
+        <slot />
+      </main>
+      <Footer />
     </div>
-
-    <Footer />
 
     <Noise />
     <ScrollProgressBar />
@@ -52,159 +55,51 @@ const { title, description = "Luis Llanes' personal website" } = Astro.props;
   </body>
 </html>
 
-<style is:global>
-  :root {
-    color-scheme: light dark;
-
-    --font-accent: "Onest Variable";
-    --font-mono: "JetBrains Mono Variable";
-
-    --background: 0 0% 95%;
-    --foreground: 0 0% 3%;
-    --muted: 0 0% 91%;
-    --muted-foreground: 0 0% 40%;
-
-    /* Default value must be in sync with the variable defaultAccentHue in ThemeControl.astro */
-    --accent-hue: 210;
-    --accent-saturation: 75%;
-    --accent-lightness: 55%;
-
-    --accent: var(--accent-hue) var(--accent-saturation) var(--accent-lightness);
-    --accent-light: var(--accent-hue) var(--accent-saturation)
-      calc(var(--accent-lightness) + 30%);
-    --accent-dark: var(--accent-hue) var(--accent-saturation)
-      calc(var(--accent-lightness) - 30%);
-
-    --accent-gradient: linear-gradient(
-      45deg,
-      hsl(var(--accent)),
-      hsl(var(--accent-light)) 40%
-    );
-
-    --gradient-background: radial-gradient(
-        37.88% 68.62% at 50% 0,
-        hsl(var(--accent) / 0.2) 0,
-        hsl(var(--accent) / 0) 80%
-      ),
-      radial-gradient(
-        10% 10% at 50% 0,
-        hsl(var(--accent) / 0.5) 0,
-        hsl(var(--accent) / 0.2) 90%,
-        hsl(var(--accent) / 0) 100%
-      ),
-      radial-gradient(
-        100% 28.09% at 100% 10%,
-        hsl(var(--accent) / 0.2) 0,
-        hsl(var(--accent) / 0.05) 80%,
-        hsl(var(--accent) / 0) 100%
-      ),
-      linear-gradient(
-        180deg,
-        hsl(var(--accent) / 0.075) 0,
-        hsl(var(--accent) / 0.05) 70%,
-        hsl(var(--background))
-      ),
-      radial-gradient(
-        74.84% 135.56% at 100% 10%,
-        hsl(var(--accent) / 0.5) 0,
-        hsl(var(--background)) 80%
-      );
-    &.dark {
-      --background: 223 16% 9%;
-      --foreground: 0 0% 95%;
-      --muted: 0 0% 14.9%;
-      --muted-foreground: 0 0% 63.9%;
-    }
-  }
-
+<style>
   html {
     font-family: system-ui, sans-serif;
     scroll-behavior: smooth;
     scroll-padding: 110px;
   }
-
   body {
-    min-height: 100vh;
+    position: relative;
     overscroll-behavior: none;
+    overflow-x: hidden;
 
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
-
   main {
     position: relative;
-  }
 
-  main::before {
-    position: absolute;
-    content: "";
-    top: -50px;
-    width: 100%;
-    height: 100vh;
-    z-index: -90;
+    &::before {
+      position: absolute;
+      content: "";
+      top: -50px;
+      width: 100%;
+      height: 100vh;
+      z-index: -90;
 
-    background-color: hsl(var(--background));
-    background-image: var(--gradient-background);
-    background-repeat: no-repeat;
-    background-size: 250%;
-    filter: blur(50px);
-    overflow-x: hidden;
+      background-color: hsl(var(--background));
+      background-image: var(--gradient-background);
+      background-repeat: no-repeat;
+      background-size: 250%;
+      filter: blur(50px);
+      overflow-x: hidden;
 
-    mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
-  }
+      mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+    }
 
-  main::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -100;
-
-    /* background-color: hsl(var(--background)); */
-  }
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    text-wrap: balance;
-  }
-
-  p,
-  li,
-  figcaption {
-    text-wrap: pretty;
-    max-width: 70ch;
-  }
-
-  header,
-  footer,
-  main,
-  section,
-  article {
-    container-type: inline-size;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -100;
     }
   }
 </style>
