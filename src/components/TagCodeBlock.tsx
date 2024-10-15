@@ -26,6 +26,7 @@ export default function TagCodeBlock({ children, label }: SectionWrapperProps) {
           isOpen ? "rotate-90" : "rotate-0",
         )}
       >
+        <span className="sr-only">Toggle open and close code block</span>
         <Chevron className="text-muted-foreground/50 hover:text-muted-foreground" />
       </button>
 
