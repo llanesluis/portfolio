@@ -10,7 +10,7 @@ const { as: Component = "h2", class: className, ...props } = Astro.props;
 ---
 
 <Component
-  class:list={["font-accent text-4xl font-bold lowercase", className]}
+  class:list={["font-mono text-4xl font-bold lowercase lg:text-5xl", className]}
   {...props}
 >
   <slot />
