@@ -1,7 +1,6 @@
 ---
 import Container from "./global/Container.astro";
 import ExternalLink from "./global/ExternalLink.astro";
-import AstroIcon from "./icons/AstroIcon.astro";
 import Links from "./Links.astro";
 ---
 
@@ -19,7 +18,12 @@ import Links from "./Links.astro";
 
     <p class="text-muted-foreground">
       This portfolio was built with
-      <ExternalLink href="https://astro.build" icon> Astro </ExternalLink>
+      <ExternalLink href="https://astro.build" icon>
+        <span class="sr-only"
+          >Astro is a framework to build content-driven websites</span
+        >
+        Astro
+      </ExternalLink>
     </p>
 
     <ExternalLink
