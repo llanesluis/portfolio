@@ -1,6 +1,4 @@
 ---
-import GlassContainer from "./global/GlassContainer.astro";
-
 interface Props {
   title: string;
 }
@@ -8,7 +6,9 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<GlassContainer
-  class="flex items-center gap-1 rounded-xl px-2 py-[2px] font-mono text-xs"
-  ><slot /> {title}
-</GlassContainer>
+<div
+  class="flex items-center gap-1 rounded-xl bg-muted px-2 py-[2px] font-mono text-xs shadow-surface-elevation-low"
+>
+  <slot />
+  {title}
+</div>

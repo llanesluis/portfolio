@@ -10,7 +10,7 @@
 
   --background: 0 0% 95%;
   --foreground: 0 0% 3%;
-  --muted: 0 0% 91%;
+  --muted: 0 0% 89%;
   --muted-foreground: 0 0% 40%;
 
   /* Default value must be in sync with the variable defaultAccentHue in ThemeControl.astro */
@@ -61,7 +61,7 @@
   &.dark {
     --background: 223 16% 9%;
     --foreground: 0 0% 95%;
-    --muted: 0 0% 14.9%;
+    --muted: 0 0% 14%;
     --muted-foreground: 0 0% 63.9%;
   }
 }
