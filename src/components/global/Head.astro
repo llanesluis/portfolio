@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  url?: string;
+}
+
+const {
+  title = "Luis Llanes | Software Engineer & full-stack developer",
+  description = "Luis Llanes is a software engineer and full-stack developer. Mainly building web applications with React, Next.js, and TypeScript.",
+  url = "https://www.llanesluis.xyz/",
+} = Astro.props;
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+<!-- Primary Meta Tags -->
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook  -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content="/og_image.webp" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content="/og_image.webp" />
+
+<meta name="generator" content={Astro.generator} />
+
+<title>{title}</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<script is:inline>
+  // Si no tiene preferencia en el local storage hace fallback al tema del sistema
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme");
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+
+  const setTheme = (theme) => {
+    document.documentElement.classList[theme === "dark" ? "add" : "remove"](
+      "dark",
+    );
+    localStorage.setItem("theme", theme);
+  };
+
+  setTheme(getThemePreference());
+</script>
