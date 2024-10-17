@@ -1,4 +1,6 @@
 ---
+import { METADATA } from "../../constants/metadata";
+
 interface Props {
   title: string;
   description?: string;
@@ -6,10 +8,12 @@ interface Props {
 }
 
 const {
-  title = "Luis Llanes | Software Engineer & full-stack developer",
-  description = "Luis Llanes is a software engineer and full-stack developer. Mainly building web applications with React, Next.js, and TypeScript.",
-  url = "https://www.llanesluis.xyz/",
+  title = METADATA.title,
+  description = METADATA.description,
+  url = METADATA.url,
 } = Astro.props;
+
+const keywords = METADATA.keywords;
 ---
 
 <meta charset="UTF-8" />
@@ -18,6 +22,7 @@ const {
 <!-- Primary Meta Tags -->
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
 
 <!-- Open Graph / Facebook  -->
 <meta property="og:type" content="website" />

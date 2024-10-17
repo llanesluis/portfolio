@@ -26,8 +26,13 @@ import TagCodeBlock from "../TagCodeBlock";
       id="header"
       class="transition-transform duration-150 will-change-transform"
     >
-      <h1 class="mb-6 text-7xl font-bold max-md:text-6xl">
-        hi, i'm <GradientText>luis</GradientText>
+      <h1
+        class="typing-text relative mb-12 text-7xl font-bold max-md:text-6xl md:mb-16"
+      >
+        hi, i'm luis
+        <span class="sr-only"
+          >Luis Fernando Llanes Bojorquez | Web Developer</span
+        >
       </h1>
 
       <TagCodeBlock
@@ -75,6 +80,88 @@ import TagCodeBlock from "../TagCodeBlock";
 </Section>
 <!-- Extra space to give the header room to show up -->
 <div class="h-14 md:h-10"></div>
+
+<style>
+  .typing-text::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+
+    content: "";
+    background: var(--accent-gradient);
+    color: transparent;
+    background-clip: text;
+
+    font-size: 0.3em;
+    font-weight: 500;
+    animation: typing-text 2s forwards;
+    animation-delay: 0.1s;
+  }
+
+  @keyframes typing-text {
+    0% {
+      content: "";
+    }
+    5% {
+      content: "f";
+    }
+    10% {
+      content: "fr";
+    }
+    15% {
+      content: "fro";
+    }
+    20% {
+      content: "fron";
+    }
+    25% {
+      content: "front";
+    }
+    30% {
+      content: "fronte";
+    }
+    35% {
+      content: "fronten";
+    }
+    40% {
+      content: "frontend";
+    }
+    45% {
+      content: "frontend ";
+    }
+    50% {
+      content: "frontend d";
+    }
+    55% {
+      content: "frontend de";
+    }
+    60% {
+      content: "frontend dev";
+    }
+    65% {
+      content: "frontend deve";
+    }
+    70% {
+      content: "frontend devel";
+    }
+    75% {
+      content: "frontend develo";
+    }
+    80% {
+      content: "frontend develop";
+    }
+    85% {
+      content: "frontend develope";
+    }
+    90% {
+      content: "frontend developer";
+    }
+    100% {
+      content: "frontend developer";
+    }
+  }
+</style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {

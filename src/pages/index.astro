@@ -9,9 +9,11 @@ import Projects from "../components/sections/Projects.astro";
 import AboutMe from "../components/sections/AboutMe.astro";
 import ContactMe from "../components/sections/ContactMe.astro";
 import Experience from "../components/sections/Experience.astro";
+
+import { METADATA } from "../constants/metadata";
 ---
 
-<RootLayout title="Luis Llanes | Software Engineer & full-stack developer">
+<RootLayout title={METADATA.title}>
   <Container>
     <Section>
       <Hero />
