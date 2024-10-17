@@ -31,33 +31,10 @@
   );
 
   --gradient-background: radial-gradient(
-      37.88% 68.62% at 50% 0,
-      hsl(var(--accent) / 0.2) 0,
-      hsl(var(--accent) / 0) 80%
-    ),
-    radial-gradient(
-      10% 10% at 50% 0,
-      hsl(var(--accent) / 0.5) 0,
-      hsl(var(--accent) / 0.2) 90%,
-      hsl(var(--accent) / 0) 100%
-    ),
-    radial-gradient(
-      100% 28.09% at 100% 10%,
-      hsl(var(--accent) / 0.2) 0,
-      hsl(var(--accent) / 0.05) 80%,
-      hsl(var(--accent) / 0) 100%
-    ),
-    linear-gradient(
-      180deg,
-      hsl(var(--accent) / 0.075) 0,
-      hsl(var(--accent) / 0.05) 70%,
-      hsl(var(--background))
-    ),
-    radial-gradient(
-      74.84% 135.56% at 100% 10%,
-      hsl(var(--accent) / 0.5) 0,
-      hsl(var(--background)) 80%
-    );
+    ellipse 60% 70% at 50% 0%,
+    hsl(var(--accent) / 0.15),
+    hsl(var(--background) / 0)
+  );
   &.dark {
     --background: 223 16% 9%;
     --foreground: 0 0% 95%;
