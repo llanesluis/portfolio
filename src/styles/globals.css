@@ -27,7 +27,7 @@
   --accent-gradient: linear-gradient(
     45deg,
     hsl(var(--accent)),
-    hsl(var(--accent-light)) 40%
+    hsl(var(--accent-dark)) 40%
   );
 
   --gradient-background: radial-gradient(
@@ -40,6 +40,12 @@
     --foreground: 0 0% 95%;
     --muted: 0 0% 14%;
     --muted-foreground: 0 0% 63.9%;
+
+    --accent-gradient: linear-gradient(
+      45deg,
+      hsl(var(--accent)),
+      hsl(var(--accent-light)) 40%
+    );
   }
 }
 
