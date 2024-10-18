@@ -9,6 +9,9 @@ import AstroIcon from "../components/icons/AstroIcon.astro";
 import Expressjs from "../components/icons/Expressjs.astro";
 import Nodejs from "../components/icons/Nodejs.astro";
 import CSharp from "../components/icons/CSharp.astro";
+import Vite from "../components/icons/Vite.astro";
+import Clerk from "../components/icons/Clerk.astro";
+import MongoDB from "../components/icons/MongoDB.astro";
 
 export const TECHNOLOGIES = [
   {
@@ -58,6 +61,18 @@ export const TECHNOLOGIES = [
   {
     label: "C#",
     Component: CSharp,
+  },
+  {
+    label: "Vite",
+    Component: Vite,
+  },
+  {
+    label: "Clerk",
+    Component: Clerk,
+  },
+  {
+    label: "MongoDB",
+    Component: MongoDB,
   },
 ] as const;
 

@@ -1,24 +1,25 @@
 ---
+import type { Project } from "../constants/projects";
 import { TECHNOLOGIES, type TechnologyLabel } from "../constants/technologies";
 import Badge from "./Badge.astro";
 import BottomPageEffect from "./global/BottomPageEffect.astro";
+import ExternalLink from "./global/ExternalLink.astro";
+import GitHub from "./icons/GitHub.astro";
+import LinkIcon from "./icons/LinkIcon.astro";
 
-interface Props {
-  title: string;
-  description: string;
-  imgUrl?: string;
-  techStack: TechnologyLabel[];
-}
+interface Props extends Project {}
 
-const { title, description, imgUrl, techStack } = Astro.props;
+const { title, description, imgUrl, techStack, liveUrl, sourceCodeUrl } =
+  Astro.props;
 ---
 
 <article class="py-8">
   <div class="group/parent project-container size-full">
+    <!-- project image -->
     <div
       class:list={[
         "project-img",
-        "group rounded-2xl shadow-surface-glass",
+        "group rounded-2xl border border-muted shadow-surface-glass",
         "bg-gradient-to-tr from-muted-foreground/10 to-accent/10",
       ]}
     >
@@ -27,9 +28,9 @@ const { title, description, imgUrl, techStack } = Astro.props;
         alt={`${title}`}
         class:list={[
           "shadow-lg",
+          "md:translate-x-8 md:translate-y-4 md:rounded-t-xl",
           "max-md:group-hover/parent:scale-105",
-          "md:translate-x-12 md:translate-y-6 md:rounded-t-xl",
-          "md:group-hover/parent:translate-x-4 md:group-hover/parent:translate-y-0",
+          "md:group-hover:translate-x-0 md:group-hover:translate-y-0",
           !imgUrl && "opacity-60",
         ]}
       />
@@ -37,23 +38,26 @@ const { title, description, imgUrl, techStack } = Astro.props;
       <div class="size-full"><BottomPageEffect /></div>
     </div>
 
+    <!-- project details -->
     <div
       class:list={[
         "project-details",
-        "prose rounded-xl dark:prose-invert",
-        "md:bg-muted/70 md:p-4 md:ring-1 md:ring-accent-dark/20 md:backdrop-blur-md",
+        "md:rounded-xl md:bg-muted/80 md:p-4 md:ring-1 md:ring-accent-dark/20 md:backdrop-blur-md",
         "md:shadow-surface-glass md:transition-shadow md:duration-200",
       ]}
     >
-      <h3
-        class="text-pretty font-accent text-accent-dark dark:text-accent-light"
-      >
-        {title}
-      </h3>
-      <p class="text-foreground">
-        {description}
-      </p>
+      <div class="prose pb-6 dark:prose-invert">
+        <h3
+          class="w-[75%] text-pretty pb-4 font-accent text-accent-dark dark:text-accent-light"
+        >
+          {title}
+        </h3>
+        <p class="text-foreground">
+          {description}
+        </p>
+      </div>
 
+      <!-- tech stack -->
       <div class="flex flex-wrap gap-2">
         {
           techStack.map((_tech) => {
@@ -72,6 +76,29 @@ const { title, description, imgUrl, techStack } = Astro.props;
           })
         }
       </div>
+
+      <!-- links -->
+      <div
+        class:list={[
+          "absolute right-0 top-0 flex items-center gap-2 text-muted-foreground",
+          "md:right-4 md:top-4",
+        ]}
+      >
+        {
+          liveUrl && (
+            <ExternalLink href={liveUrl} title="Live project">
+              <LinkIcon class="size-7" />
+            </ExternalLink>
+          )
+        }
+        {
+          sourceCodeUrl && (
+            <ExternalLink href={sourceCodeUrl} title="Source code on GitHub">
+              <GitHub class="size-6" />
+            </ExternalLink>
+          )
+        }
+      </div>
     </div>
   </div>
 </article>
@@ -79,11 +106,6 @@ const { title, description, imgUrl, techStack } = Astro.props;
 <style>
   .project-container {
     display: grid;
-
-    grid-template-areas:
-      "img"
-      "details";
-
     gap: 24px;
 
     @media (min-width: 768px) {
@@ -98,12 +120,15 @@ const { title, description, imgUrl, techStack } = Astro.props;
   .project-img {
     position: relative;
     isolation: isolate;
-    grid-area: img;
     aspect-ratio: 16 / 9;
     overflow: hidden;
 
     img {
-      size: 100%;
+      width: 100%;
+      height: 100%;
+
+      object-position: top;
+      object-fit: cover;
 
       position: absolute;
       bottom: 0;
@@ -112,10 +137,19 @@ const { title, description, imgUrl, techStack } = Astro.props;
       transition-duration: 0.2s;
       transition-timing-function: ease-in-out;
     }
+    @media (min-width: 768px) {
+      grid-area: img;
+    }
   }
 
   .project-details {
-    grid-area: details;
+    position: relative;
     z-index: 1;
+
+    width: 100%;
+
+    @media (min-width: 768px) {
+      grid-area: details;
+    }
   }
 </style>

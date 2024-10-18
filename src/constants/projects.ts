@@ -5,34 +5,33 @@ export type Project = {
   description: string;
   imgUrl: string;
   techStack: TechnologyLabel[];
+  sourceCodeUrl?: string;
+  liveUrl?: string;
 };
 
 export const PROJECTS = [
   {
-    title: "E-commerce website",
+    title: "Image Editor SaaS",
     description:
-      "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, esse excepturi reiciendis non aspernatur assumenda blanditiis?",
-    imgUrl: "/projects/portfolio.webp",
+      "Web app to enhance and transform images with AI. Was built to solve a problem I had working with low quality images for a family business.",
+    imgUrl: "/projects/image_editor_saas.webp",
     techStack: [
       "TypeScript",
       "React",
       "Nextjs",
       "TailwindCSS",
-      "React Query",
-      "Git",
+      "Clerk",
+      "MongoDB",
     ],
+    sourceCodeUrl: "https://github.com/llanesluis/image-enhancer",
+    liveUrl: "https://image-enhancer-kappa.vercel.app/",
   },
   {
-    title: "Project Two Lorem ipsum dolor sit consectetur adipisicing elit.",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
-    imgUrl: "/projects/portfolio.webp",
-    techStack: ["CSS", "HTML", "TypeScript", "Astro", "React", "Git"],
-  },
-  {
-    title: "Project Three",
+    title: "React Query V5 Demo",
     description:
-      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam doloremque ut, quaerat sapiente officiis eligendi qui dolore excepturi! Odit aspernatur esse neque?",
-    imgUrl: "/projects/portfolio.webp",
-    techStack: ["TypeScript", "Nodejs", "Expressjs", "React", "Git"],
+      "This project was created to learn React Query and most of its features by building a simple CRUD app.",
+    imgUrl: "/projects/react_query_demo.webp",
+    techStack: ["React", "Vite", "React Query", "TailwindCSS"],
+    sourceCodeUrl: "https://github.com/llanesluis/tanstack-query-demo",
   },
 ] satisfies Project[];
