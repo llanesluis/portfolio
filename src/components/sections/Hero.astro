@@ -29,17 +29,34 @@ const typingTextTitle = "frontend developer";
     >
       <TypingAnimatedText
         text={typingTextTitle}
-        class="bg-accent-gradient bg-clip-text text-xl font-semibold text-transparent"
+        class="bg-accent-gradient bg-clip-text text-xl font-semibold text-transparent md:text-2xl"
       />
 
-      <h1
-        class="typing-text relative mb-12 text-7xl font-bold max-md:text-6xl md:mb-16"
-      >
+      <h1 class="typing-text relative text-7xl font-bold max-md:text-6xl">
         hi, i'm luis
         <span class="sr-only"
           >Luis Fernando Llanes Bojorquez | Web Developer</span
         >
       </h1>
+
+      <nav
+        class:list={[
+          "mb-8 mt-2 flex items-center gap-4 pl-1 font-accent lowercase",
+          "md:mb-12 md:gap-8 md:text-lg",
+        ]}
+      >
+        <ExternalLink href={SOCIALS.linkedin} title={"LinkedIn"} icon>
+          <span>LinkedIn</span>
+        </ExternalLink>
+
+        <ExternalLink href={SOCIALS.github} title={"GitHub"} icon>
+          <span>GitHub</span>
+        </ExternalLink>
+
+        <ExternalLink href={SOCIALS.email} title={"Email"} icon>
+          <span>E-mail me</span>
+        </ExternalLink>
+      </nav>
 
       <TagCodeBlock
         label="Details"
@@ -61,20 +78,6 @@ const typingTextTitle = "frontend developer";
               new stuff.
             </p>
           </div>
-
-          <nav class="flex items-center gap-4">
-            <ExternalLink href={SOCIALS.linkedin} title={"LinkedIn"}>
-              <LinkedIn class="size-6" />
-            </ExternalLink>
-
-            <ExternalLink href={SOCIALS.github} title={"GitHub"}>
-              <GitHub class="size-6" />
-            </ExternalLink>
-
-            <ExternalLink href={SOCIALS.email} title={"Email"}>
-              <Mail class="size-4" />
-            </ExternalLink>
-          </nav>
         </article>
 
         <div class="relative w-full pt-12">
