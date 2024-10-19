@@ -7,12 +7,18 @@ import SectionHeading from "../global/SectionHeading.astro";
 import LinkedIn from "../icons/LinkedIn.astro";
 import { SOCIALS } from "../../constants/socials";
 import ContactForm from "../ContactForm";
+import TypingAnimatedText from "../global/TypingAnimatedText.astro";
 ---
 
 <Section id="contact-me">
   <SectionHeading as="h2">
     <GradientText>Contact Me</GradientText>
   </SectionHeading>
+
+  <TypingAnimatedText
+    text="Any feedback is appreciated too! 😁"
+    class="text-right text-sm text-muted-foreground"
+  />
 
   <div class="contact-section">
     <GlassContainer class="trans w-full rounded-2xl p-6">

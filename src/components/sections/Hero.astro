@@ -1,16 +1,17 @@
 ---
-import ExternalLink from "../global/ExternalLink.astro";
-import GlassContainer from "../global/GlassContainer.astro";
-import GradientText from "../global/GradientText.astro";
+import { SOCIALS } from "../../constants/socials";
 import SiteHeader from "../SiteHeader.astro";
+import TagCodeBlock from "../TagCodeBlock";
 import Technologies from "../Technologies.astro";
+import ExternalLink from "../global/ExternalLink.astro";
+import Highlight from "../global/Highlight.astro";
+import Section from "../global/Section.astro";
+import TypingAnimatedText from "../global/TypingAnimatedText.astro";
 import GitHub from "../icons/GitHub.astro";
 import LinkedIn from "../icons/LinkedIn.astro";
 import Mail from "../icons/Mail.astro";
-import Highlight from "../global/Highlight.astro";
-import Section from "../global/Section.astro";
-import { SOCIALS } from "../../constants/socials";
-import TagCodeBlock from "../TagCodeBlock";
+
+const typingTextTitle = "frontend developer";
 ---
 
 <section
@@ -26,6 +27,11 @@ import TagCodeBlock from "../TagCodeBlock";
       id="header"
       class="transition-transform duration-150 will-change-transform"
     >
+      <TypingAnimatedText
+        text={typingTextTitle}
+        class="bg-accent-gradient bg-clip-text text-xl font-semibold text-transparent"
+      />
+
       <h1
         class="typing-text relative mb-12 text-7xl font-bold max-md:text-6xl md:mb-16"
       >
@@ -82,84 +88,10 @@ import TagCodeBlock from "../TagCodeBlock";
 <div class="h-14 md:h-10"></div>
 
 <style>
-  .typing-text::after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: translateY(100%);
-
-    content: "";
+  .gradient-text {
     background: var(--accent-gradient);
     color: transparent;
     background-clip: text;
-
-    font-size: 0.3em;
-    font-weight: 500;
-    animation: typing-text 2s forwards;
-    animation-delay: 0.5s;
-  }
-
-  @keyframes typing-text {
-    0% {
-      content: "";
-    }
-    5% {
-      content: "f";
-    }
-    10% {
-      content: "fr";
-    }
-    15% {
-      content: "fro";
-    }
-    20% {
-      content: "fron";
-    }
-    25% {
-      content: "front";
-    }
-    30% {
-      content: "fronte";
-    }
-    35% {
-      content: "fronten";
-    }
-    40% {
-      content: "frontend";
-    }
-    45% {
-      content: "frontend ";
-    }
-    50% {
-      content: "frontend d";
-    }
-    55% {
-      content: "frontend de";
-    }
-    60% {
-      content: "frontend dev";
-    }
-    65% {
-      content: "frontend deve";
-    }
-    70% {
-      content: "frontend devel";
-    }
-    75% {
-      content: "frontend develo";
-    }
-    80% {
-      content: "frontend develop";
-    }
-    85% {
-      content: "frontend develope";
-    }
-    90% {
-      content: "frontend developer";
-    }
-    100% {
-      content: "frontend developer";
-    }
   }
 </style>
 

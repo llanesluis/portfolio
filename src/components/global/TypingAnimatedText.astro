@@ -1,0 +1,92 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"p"> {
+  text: string;
+}
+
+const { text = "default animated text", class: className } = Astro.props;
+---
+
+<p
+  class:list={["typing font-mono", className]}
+  {...Astro.props}
+  id="typing-animated-text"
+>
+  {text}
+</p>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const typingElements = document.querySelectorAll("#typing-animated-text");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const target = entry.target;
+
+        if (!entry.isIntersecting) return;
+
+        if (target instanceof HTMLParagraphElement) {
+          target.style.animationPlayState = "running"; // Inicia la animación, inicialmente esta pausada.
+        }
+      });
+    });
+
+    typingElements.forEach((element) => {
+      observer.observe(element); // Observar cada elemento con id "typing-animated-text"
+    });
+  });
+</script>
+
+<style define:vars={{ typingTextLength: text.length }}>
+  @property --animation-duration {
+    syntax: "<time>";
+    inherits: false;
+    initial-value: 3s;
+  }
+
+  @property --animation-delay {
+    syntax: "<time>";
+    inherits: false;
+    initial-value: 0s;
+  }
+
+  .typing {
+    --animation-duration: 2s;
+    --animation-delay: 0.5s;
+
+    interpolate-size: allow-keywords;
+
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+
+    border-right: 2px solid hsl(var(--foreground));
+    line-height: 1.1;
+
+    animation:
+      typing var(--animation-duration) steps(var(--typingTextLength)) forwards
+        var(--animation-delay),
+      blink 0.5s step-end alternate infinite;
+
+    animation-play-state: paused;
+  }
+
+  @keyframes typing {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: fit-content;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-right-color: transparent;
+    }
+    100% {
+      border-right-color: hsl(var(--foreground));
+    }
+  }
+</style>

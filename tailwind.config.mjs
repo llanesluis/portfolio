@@ -6,6 +6,9 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      backgroundImage: {
+        "accent-gradient": "var(--accent-gradient)",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
