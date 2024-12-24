@@ -11,6 +11,15 @@ export type Project = {
 
 export const PROJECTS = [
   {
+    title: "Landing page for Las Lasañas LM",
+    description:
+      "Landing page for a small business specializing in lasagna as a fast-food alternative, designed to showcase their menu and social media presence.",
+    techStack: ["TypeScript", "Nextjs", "React", "TailwindCSS", "Git"],
+    imgUrl: "/projects/las_lasanas.webp",
+    liveUrl: "https://las-lasanas-lm.vercel.app/",
+    sourceCodeUrl: "https://github.com/llanesluis/las-lasanas-lm",
+  },
+  {
     title: "Image Editor SaaS",
     description:
       "Web app to enhance and transform images with AI. Was built to solve a problem I had working with low quality images for a family business.",
