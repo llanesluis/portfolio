@@ -3,14 +3,17 @@
 <style>
   .grid-background-top {
     --bg-height: 100vh;
-    --bg-size: 48px;
+    --bg-size: 16px;
 
     position: absolute;
     height: var(--bg-height);
     pointer-events: none;
     inset-inline: 0;
     top: 0;
-    z-index: -1;
+
+    /* This z-index shows this element *above* everything else on the page (since the <body> is isolated) */
+    /* this looks good until you set the opacity to 1 / 100% */
+    z-index: 1;
 
     background-size: var(--bg-size) var(--bg-size);
     background-image: linear-gradient(
