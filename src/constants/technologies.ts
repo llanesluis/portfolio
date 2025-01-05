@@ -12,6 +12,7 @@ import CSharp from "../components/icons/CSharp.astro";
 import Vite from "../components/icons/Vite.astro";
 import Clerk from "../components/icons/Clerk.astro";
 import MongoDB from "../components/icons/MongoDB.astro";
+import Git from "../components/icons/Git.astro";
 
 export const TECHNOLOGIES = [
   {
@@ -56,7 +57,7 @@ export const TECHNOLOGIES = [
   },
   {
     label: "Git",
-    Component: HTML,
+    Component: Git,
   },
   {
     label: "C#",
