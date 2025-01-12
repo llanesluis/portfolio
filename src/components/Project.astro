@@ -4,13 +4,22 @@ import { TECHNOLOGIES, type TechnologyLabel } from "../constants/technologies";
 import Badge from "./Badge.astro";
 import BottomPageEffect from "./global/BottomPageEffect.astro";
 import ExternalLink from "./global/ExternalLink.astro";
+import Highlight from "./global/Highlight.astro";
 import GitHub from "./icons/GitHub.astro";
 import LinkIcon from "./icons/LinkIcon.astro";
 
 interface Props extends Project {}
 
-const { title, description, imgUrl, techStack, liveUrl, sourceCodeUrl } =
-  Astro.props;
+const {
+  title,
+  description,
+  imgUrl,
+  techStack,
+  liveUrl,
+  sourceCodeUrl,
+  tags,
+  wip,
+} = Astro.props;
 ---
 
 <article class="py-8">
@@ -34,6 +43,7 @@ const { title, description, imgUrl, techStack, liveUrl, sourceCodeUrl } =
         ]}
       />
 
+      {wip && <span class="wip font-mono" />}
       <div class="size-full"><BottomPageEffect /></div>
     </div>
 
@@ -51,104 +61,150 @@ const { title, description, imgUrl, techStack, liveUrl, sourceCodeUrl } =
         >
           {title}
         </h3>
+
+        <div class="flex h-fit flex-wrap divide-x italic">
+          {
+            tags?.length &&
+              tags.map((tag) => (
+                <span class="px-2 font-mono text-xs text-muted-foreground">
+                  {tag}
+                </span>
+              ))
+          }
+        </div>
+
         <p class="text-foreground">
           {description}
         </p>
-      </div>
 
-      <!-- tech stack -->
-      <div class="flex flex-wrap gap-2">
-        {
-          techStack.map((_tech) => {
-            const tech = TECHNOLOGIES.find((t) => t.label === _tech);
+        <!-- tech stack -->
+        <div class="flex flex-wrap gap-2">
+          {
+            techStack.map((_tech) => {
+              const tech = TECHNOLOGIES.find((t) => t.label === _tech);
 
-            if (!tech) return;
+              if (!tech) return;
 
-            const label = tech.label;
-            const Component = tech.Component;
+              const label = tech.label;
+              const Component = tech.Component;
 
-            return (
-              <Badge title={label}>
-                <Component class="size-3" />
-              </Badge>
-            );
-          })
-        }
-      </div>
+              return (
+                <Badge title={label}>
+                  <Component class="size-3" />
+                </Badge>
+              );
+            })
+          }
+        </div>
 
-      <!-- links -->
-      <div
-        class:list={[
-          "absolute right-0 top-0 flex items-center gap-2 text-muted-foreground",
-          "md:right-4 md:top-4",
-        ]}
-      >
-        {
-          liveUrl && (
-            <ExternalLink href={liveUrl} title="Live project">
-              <LinkIcon class="size-7" />
-            </ExternalLink>
-          )
-        }
-        {
-          sourceCodeUrl && (
-            <ExternalLink href={sourceCodeUrl} title="Source code on GitHub">
-              <GitHub class="size-6" />
-            </ExternalLink>
-          )
-        }
+        <!-- links -->
+        <div
+          class:list={[
+            "absolute right-0 top-0 flex items-center gap-2 text-muted-foreground",
+            "md:right-4 md:top-4",
+          ]}
+        >
+          {
+            liveUrl && (
+              <ExternalLink href={liveUrl} title="Live project">
+                <LinkIcon class="size-7" />
+              </ExternalLink>
+            )
+          }
+          {
+            sourceCodeUrl && (
+              <ExternalLink href={sourceCodeUrl} title="Source code on GitHub">
+                <GitHub class="size-6" />
+              </ExternalLink>
+            )
+          }
+        </div>
       </div>
     </div>
   </div>
-</article>
 
-<style>
-  .project-container {
-    display: grid;
-    gap: 24px;
+  <style>
+    .project-container {
+      display: grid;
+      gap: 24px;
 
-    @media (min-width: 768px) {
-      grid-template-areas: none;
+      @media (min-width: 768px) {
+        grid-template-areas: none;
 
-      grid-template-columns: [img-start] 1fr 1fr 1fr 1fr 1fr [details-start] 1fr 1fr 1fr [img-end] 1fr [details-end];
-      grid-template-rows: [img-start] 1fr 1fr [details-start] 1fr 1fr 1fr 1fr 1fr [img-end] 1fr [details-end];
-      align-items: end;
+        grid-template-columns: [img-start] 1fr 1fr 1fr 1fr 1fr [details-start] 1fr 1fr 1fr [img-end] 1fr [details-end];
+        grid-template-rows: [img-start] 1fr 1fr [details-start] 1fr 1fr 1fr 1fr 1fr [img-end] 1fr [details-end];
+        align-items: end;
+      }
     }
-  }
 
-  .project-img {
-    position: relative;
-    isolation: isolate;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
+    .project-img {
+      position: relative;
+      isolation: isolate;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
 
-    img {
+      img {
+        width: 100%;
+        height: 100%;
+
+        object-position: top;
+        object-fit: cover;
+
+        position: absolute;
+        bottom: 0;
+        object-fit: cover;
+        transition: all;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+      }
+      @media (min-width: 768px) {
+        grid-area: img;
+      }
+
+      & > .wip {
+        top: 2rem;
+        display: flex;
+        justify-items: center;
+        align-items: center;
+
+        &::before {
+          content: "work in progress";
+          position: absolute;
+          height: fit-content;
+          inset: 0;
+          top: 5%;
+          pointer-events: none;
+          backdrop-filter: blur(2px);
+
+          text-transform: lowercase;
+
+          text-align: center;
+          font-weight: bold;
+          color: rgba(0, 0, 0, 0.8);
+          font-size: min(3rem, 6vw);
+          white-space: nowrap;
+          rotate: 3deg;
+
+          background-image: linear-gradient(
+            to right,
+            transparent 5%,
+            #ffd000,
+            transparent 95%
+          );
+          box-shadow: 0px 2px 0px 1px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+
+    .project-details {
+      position: relative;
+      z-index: 1;
+
       width: 100%;
-      height: 100%;
 
-      object-position: top;
-      object-fit: cover;
-
-      position: absolute;
-      bottom: 0;
-      object-fit: cover;
-      transition: all;
-      transition-duration: 0.2s;
-      transition-timing-function: ease-in-out;
+      @media (min-width: 768px) {
+        grid-area: details;
+      }
     }
-    @media (min-width: 768px) {
-      grid-area: img;
-    }
-  }
-
-  .project-details {
-    position: relative;
-    z-index: 1;
-
-    width: 100%;
-
-    @media (min-width: 768px) {
-      grid-area: details;
-    }
-  }
-</style>
+  </style>
+</article>

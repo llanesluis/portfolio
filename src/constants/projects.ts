@@ -1,5 +1,7 @@
 import type { TechnologyLabel } from "./technologies";
 
+type Tags = Array<"side-project" | "learn" | "forgotten" | (string & {})>;
+
 export type Project = {
   title: string;
   description: string;
@@ -7,6 +9,8 @@ export type Project = {
   techStack: TechnologyLabel[];
   sourceCodeUrl?: string;
   liveUrl?: string;
+  wip?: boolean;
+  tags?: Tags;
 };
 
 export const PROJECTS = [
@@ -18,6 +22,8 @@ export const PROJECTS = [
     imgUrl: "/projects/las_lasanas.webp",
     liveUrl: "https://las-lasanas-lm.vercel.app/",
     sourceCodeUrl: "https://github.com/llanesluis/las-lasanas-lm",
+    wip: true,
+    tags: ["side-project", "learn"],
   },
   {
     title: "Image Editor SaaS",
@@ -34,6 +40,7 @@ export const PROJECTS = [
     ],
     sourceCodeUrl: "https://github.com/llanesluis/image-enhancer",
     liveUrl: "https://image-enhancer-kappa.vercel.app/",
+    tags: ["learn", "forgotten", "side-project"],
   },
   {
     title: "React Query V5 Demo",
@@ -42,5 +49,6 @@ export const PROJECTS = [
     imgUrl: "/projects/react_query_demo.webp",
     techStack: ["React", "Vite", "React Query", "TailwindCSS"],
     sourceCodeUrl: "https://github.com/llanesluis/tanstack-query-demo",
+    tags: ["learn"],
   },
 ] satisfies Project[];
