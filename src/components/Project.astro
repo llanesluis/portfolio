@@ -28,7 +28,7 @@ const {
     <div
       class:list={[
         "project-img",
-        "group rounded-2xl border border-muted shadow-surface-glass",
+        "group rounded-xl border border-muted shadow-surface-glass",
         "bg-gradient-to-tr from-muted-foreground/10 to-accent/10",
       ]}
     >
@@ -50,11 +50,14 @@ const {
     <!-- project details -->
     <div
       class:list={[
-        "project-details border-muted max-md:border-b",
-        "md:rounded-xl md:bg-muted/80 md:p-4 md:ring-1 md:ring-accent-dark/20 md:backdrop-blur-md md:[@supports(backdrop-filter:blur(16px))]:bg-muted/[75%]",
+        "project-details relative border-muted max-md:border-b",
+        "md:rounded-lg md:bg-muted/80 md:p-4 md:ring-1 md:ring-accent-dark/20 md:backdrop-blur-md md:[@supports(backdrop-filter:blur(16px))]:bg-muted/[75%]",
         "md:transition-shadow md:duration-200",
       ]}
     >
+      <!-- bottom project effect on smaller screens -->
+      <div class="bottom-project-effect md:hidden"></div>
+
       <div class="prose pb-6 dark:prose-invert">
         <h3
           class="w-[75%] text-pretty pb-4 font-accent text-accent-dark dark:text-accent-light"
@@ -122,89 +125,112 @@ const {
       </div>
     </div>
   </div>
-
-  <style>
-    .project-container {
-      display: grid;
-      gap: 24px;
-
-      @media (min-width: 768px) {
-        grid-template-areas: none;
-
-        grid-template-columns: [img-start] 1fr 1fr 1fr 1fr 1fr [details-start] 1fr 1fr 1fr [img-end] 1fr [details-end];
-        grid-template-rows: [img-start] 1fr 1fr [details-start] 1fr 1fr 1fr 1fr 1fr [img-end] 1fr [details-end];
-        align-items: end;
-      }
-    }
-
-    .project-img {
-      position: relative;
-      isolation: isolate;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-
-      img {
-        width: 100%;
-        height: 100%;
-
-        object-position: top;
-        object-fit: cover;
-
-        position: absolute;
-        bottom: 0;
-        object-fit: cover;
-        transition: all;
-        transition-duration: 0.2s;
-        transition-timing-function: ease-in-out;
-      }
-      @media (min-width: 768px) {
-        grid-area: img;
-      }
-
-      & > .wip {
-        top: 2rem;
-        display: flex;
-        justify-items: center;
-        align-items: center;
-
-        &::before {
-          content: "work in progress";
-          position: absolute;
-          height: fit-content;
-          inset: 0;
-          top: 5%;
-          pointer-events: none;
-          backdrop-filter: blur(2px);
-
-          text-transform: lowercase;
-
-          text-align: center;
-          font-weight: bold;
-          color: rgba(0, 0, 0, 0.8);
-          font-size: min(3rem, 6vw);
-          white-space: nowrap;
-          rotate: 3deg;
-
-          background-image: linear-gradient(
-            to right,
-            transparent 5%,
-            #ffd000,
-            transparent 95%
-          );
-          box-shadow: 0px 2px 0px 1px rgba(0, 0, 0, 0.1);
-        }
-      }
-    }
-
-    .project-details {
-      position: relative;
-      z-index: 1;
-
-      width: 100%;
-
-      @media (min-width: 768px) {
-        grid-area: details;
-      }
-    }
-  </style>
 </article>
+
+<style>
+  .project-container {
+    display: grid;
+    gap: 24px;
+
+    @media (min-width: 768px) {
+      grid-template-areas: none;
+
+      grid-template-columns: [img-start] 1fr 1fr 1fr 1fr 1fr [details-start] 1fr 1fr 1fr [img-end] 1fr [details-end];
+      grid-template-rows: [img-start] 1fr 1fr [details-start] 1fr 1fr 1fr 1fr 1fr [img-end] 1fr [details-end];
+      align-items: end;
+    }
+  }
+
+  .project-img {
+    position: relative;
+    isolation: isolate;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      object-position: top;
+      object-fit: cover;
+
+      position: absolute;
+      bottom: 0;
+      object-fit: cover;
+      transition: all;
+      transition-duration: 0.2s;
+      transition-timing-function: ease-in-out;
+    }
+    @media (min-width: 768px) {
+      grid-area: img;
+    }
+
+    & > .wip {
+      top: 2rem;
+      display: flex;
+      justify-items: center;
+      align-items: center;
+
+      &::before {
+        content: "work in progress";
+        position: absolute;
+        height: fit-content;
+        inset: 0;
+        top: 5%;
+        pointer-events: none;
+        backdrop-filter: blur(2px);
+
+        text-transform: lowercase;
+
+        text-align: center;
+        font-weight: bold;
+        color: rgba(0, 0, 0, 0.8);
+        font-size: min(3rem, 6vw);
+        white-space: nowrap;
+        rotate: 3deg;
+
+        background-image: linear-gradient(
+          to right,
+          transparent 5%,
+          #ffd000,
+          transparent 95%
+        );
+        box-shadow: 0px 2px 0px 1px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  .project-details {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+
+    @media (min-width: 768px) {
+      grid-area: details;
+    }
+  }
+
+  .bottom-project-effect {
+    --bg-height: 150px;
+    --bg-size: 8px;
+
+    position: absolute;
+    height: var(--bg-height);
+    pointer-events: none;
+    inset-inline: 0;
+    bottom: 0;
+
+    z-index: -1;
+
+    background-size: var(--bg-size) var(--bg-size);
+    background-image: linear-gradient(
+        to right,
+        hsl(var(--accent) / 25%) 1px,
+        transparent 1px
+      ),
+      linear-gradient(hsl(var(--accent) / 25%) 1px, transparent 1px);
+
+    mask-image: linear-gradient(to bottom, transparent, #000);
+  }
+</style>

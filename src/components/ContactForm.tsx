@@ -49,7 +49,7 @@ export default function ContactForm() {
 
   return (
     <form
-      className="contact-form font-onest py-6"
+      className="contact-form py-6"
       id="contact-form"
       onSubmit={handleSubmit}
     >

@@ -17,7 +17,7 @@ const { title, href, class: className, icon } = Astro.props;
   class:list={[
     "group",
     "flex w-fit items-center justify-between gap-[2px] transition",
-    "hover:text-accent group-hover:text-accent",
+    "hover:text-accent hover:underline",
     "active:scale-95",
     "inline-flex",
     className,
@@ -32,7 +32,7 @@ const { title, href, class: className, icon } = Astro.props;
         viewBox="0 0 24 24"
         stroke-width="2.5"
         stroke="currentColor"
-        class="size-2 transition-transform group-hover:scale-125"
+        class="size-2 transition-transform group-hover:rotate-45 group-hover:scale-110"
       >
         <path
           stroke-linecap="round"
