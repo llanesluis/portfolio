@@ -11,6 +11,7 @@ import ContactMe from "../components/sections/ContactMe.astro";
 import Experience from "../components/sections/Experience.astro";
 
 import { METADATA } from "../constants/metadata";
+import ThemeControl from "../components/global/ThemeControl.astro";
 ---
 
 <RootLayout title={METADATA.title}>
@@ -23,4 +24,6 @@ import { METADATA } from "../constants/metadata";
       <ContactMe />
     </Section>
   </Container>
+
+  <ThemeControl />
 </RootLayout>

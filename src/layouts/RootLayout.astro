@@ -1,19 +1,18 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import Footer from "../components/Footer.astro";
-import Noise from "../components/global/Noise.astro";
-import ScreenHelpers from "../components/helpers/ScreenHelpers.astro";
-import ThemeControl from "../components/global/ThemeControl.astro";
-import ScrollProgressBar from "../components/global/ScrollProgressBar.astro";
 import BottomPageEffect from "../components/global/BottomPageEffect.astro";
+import Noise from "../components/global/Noise.astro";
+import ScrollProgressBar from "../components/global/ScrollProgressBar.astro";
 import TopPageEffect from "../components/global/TopPageEffect.astro";
+import ScreenHelpers from "../components/helpers/ScreenHelpers.astro";
 
-import "@fontsource-variable/onest";
-import "@fontsource-variable/geist-mono";
 import "@fontsource-variable/dm-sans";
+import "@fontsource-variable/geist-mono";
+import "@fontsource-variable/onest";
 
-import "../styles/globals.css";
 import Head from "../components/global/Head.astro";
+import "../styles/globals.css";
 
 interface Props {
   title: string;
@@ -46,7 +45,6 @@ const { title, description } = Astro.props;
     <Noise />
     <ScrollProgressBar />
     <BottomPageEffect />
-    <ThemeControl />
     <ScreenHelpers />
   </body>
 </html>

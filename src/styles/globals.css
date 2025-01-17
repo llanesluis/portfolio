@@ -37,7 +37,7 @@
     hsl(var(--background) / 0)
   );
   &.dark {
-    --background: 223 16% 9%;
+    --background: 223 16% 5%;
     --foreground: 0 0% 95%;
     --muted: 0 0% 14%;
     --muted-foreground: 0 0% 63.9%;
