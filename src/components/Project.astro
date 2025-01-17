@@ -50,9 +50,9 @@ const {
     <!-- project details -->
     <div
       class:list={[
-        "project-details",
-        "md:rounded-xl md:bg-muted/80 md:p-4 md:ring-1 md:ring-accent-dark/20 md:backdrop-blur-md",
-        "md:shadow-surface-glass md:transition-shadow md:duration-200",
+        "project-details border-muted max-md:border-b",
+        "md:rounded-xl md:bg-muted/80 md:p-4 md:ring-1 md:ring-accent-dark/20 md:backdrop-blur-md md:[@supports(backdrop-filter:blur(16px))]:bg-muted/[75%]",
+        "md:transition-shadow md:duration-200",
       ]}
     >
       <div class="prose pb-6 dark:prose-invert">
@@ -67,7 +67,7 @@ const {
             tags?.length &&
               tags.map((tag) => (
                 <span class="px-2 font-mono text-xs text-muted-foreground">
-                  {tag}
+                  #{tag}
                 </span>
               ))
           }
