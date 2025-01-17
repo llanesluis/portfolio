@@ -9,9 +9,7 @@ import Links from "./Links.astro";
 import LinksWithIcon from "./LinksWithIcon.astro";
 ---
 
-<GlassContainer
-  class="absolute w-full rounded-full bg-muted/70 py-2 pl-2.5 pr-6"
->
+<GlassContainer class="absolute w-full rounded-xl py-2 pl-2.5 pr-6">
   <header
     class="flex items-center justify-between gap-2 font-accent font-semibold"
   >
@@ -24,13 +22,13 @@ import LinksWithIcon from "./LinksWithIcon.astro";
         "active:scale-95",
       ]}
     >
-      <div class="group size-10 overflow-hidden rounded-full bg-accent">
+      <div class="group size-10 overflow-hidden rounded-lg bg-accent">
         <img
           src="/photo.webp"
           alt="Luis Llanes"
           height="100%"
           width="100%"
-          class:list={["rounded-full transition", "hover:scale-90"]}
+          class:list={["rounded-lg transition", "hover:scale-90"]}
         />
       </div>
     </a>
