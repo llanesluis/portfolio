@@ -20,6 +20,12 @@ importers:
       '@astrojs/vercel':
         specifier: ^7.8.1
         version: 7.8.1(astro@4.15.8(rollup@4.21.2)(typescript@5.5.4))(react@18.3.1)
+      '@fontsource-variable/dm-sans':
+        specifier: ^5.1.1
+        version: 5.1.1
+      '@fontsource-variable/geist-mono':
+        specifier: ^5.0.1
+        version: 5.0.1
       '@fontsource-variable/jetbrains-mono':
         specifier: ^5.1.0
         version: 5.1.0
@@ -406,6 +412,12 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource-variable/dm-sans@5.1.1':
+    resolution: {integrity: sha512-oOroo1rQurZR8giuNLF64W+EqvZt6prsdJS6gGCAZgD/AMIHKmL6RzVjznGb8ZGXCeiJpVWO/xd4DPgMqr7ayQ==}
+
+  '@fontsource-variable/geist-mono@5.0.1':
+    resolution: {integrity: sha512-HwNLiQ3fJnqHitA6QFSfeY3A9s/5MvSX/9uNC4TBqwS8NQiRoqATEXZtn1Sbgt5/Tx7iT4IYOYKQleIs5nz7sw==}
 
   '@fontsource-variable/jetbrains-mono@5.1.0':
     resolution: {integrity: sha512-Hk2HCSep+EmX6nSPNTS3goN0V0TOigdVWcGdnxTVIZIa89HtZAe/zhzFEM1iBXrBShilPwKEdjANHa5plSi38A==}
@@ -3037,6 +3049,10 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.5':
     optional: true
+
+  '@fontsource-variable/dm-sans@5.1.1': {}
+
+  '@fontsource-variable/geist-mono@5.0.1': {}
 
   '@fontsource-variable/jetbrains-mono@5.1.0': {}
 

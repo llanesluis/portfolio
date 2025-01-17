@@ -9,7 +9,8 @@ import BottomPageEffect from "../components/global/BottomPageEffect.astro";
 import TopPageEffect from "../components/global/TopPageEffect.astro";
 
 import "@fontsource-variable/onest";
-import "@fontsource-variable/jetbrains-mono";
+import "@fontsource-variable/geist-mono";
+import "@fontsource-variable/dm-sans";
 
 import "../styles/globals.css";
 import Head from "../components/global/Head.astro";
@@ -63,6 +64,7 @@ const { title, description } = Astro.props;
 
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
+    font-family: var(--font-sans);
   }
   main {
     position: relative;

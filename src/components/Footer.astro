@@ -4,7 +4,7 @@ import ExternalLink from "./global/ExternalLink.astro";
 import Links from "./Links.astro";
 ---
 
-<footer class="bg-background py-12" transition:name="footer">
+<footer class="bg-background py-12 font-mono" transition:name="footer">
   <Container class="grid gap-2">
     <div class="flex justify-between">
       <div>
@@ -16,7 +16,7 @@ import Links from "./Links.astro";
       <Links />
     </div>
 
-    <p class="text-muted-foreground">
+    <p class="text-sm text-muted-foreground">
       This portfolio was built with
       <ExternalLink href="https://astro.build" icon>
         <span class="sr-only"
@@ -29,7 +29,7 @@ import Links from "./Links.astro";
     <ExternalLink
       href="https://github.com/llanesluis/portfolio"
       icon
-      class="text-muted-foreground"
+      class="text-sm text-muted-foreground"
       >View source code
     </ExternalLink>
   </Container>

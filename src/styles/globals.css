@@ -6,7 +6,8 @@
   color-scheme: light dark;
 
   --font-accent: "Onest Variable";
-  --font-mono: "JetBrains Mono Variable";
+  --font-sans: "DM Sans Variable";
+  --font-mono: "Geist Mono Variable";
 
   --background: 0 0% 95%;
   --foreground: 0 0% 3%;
@@ -51,6 +52,7 @@
 
 code {
   font-family:
+    Geist Mono,
     Menlo,
     Monaco,
     Lucida Console,

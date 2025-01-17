@@ -56,7 +56,7 @@ export default function TagCodeBlock({
           "hover:border-muted-foreground",
         )}
       >
-        <div className="py-4">{children}</div>
+        <div className="py-4 font-mono">{children}</div>
       </div>
 
       <div>
