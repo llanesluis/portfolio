@@ -15,6 +15,16 @@ export type Project = {
 
 export const PROJECTS = [
   {
+    title: "DevTool for building responsive websites",
+    description:
+      "Provides an easy way to track screen breakpoints and to switch between dark/light/system themes.",
+    techStack: ["TypeScript", "Nextjs", "React", "TailwindCSS", "HTML", "CSS"],
+    imgUrl: "/projects/devtools.webp",
+    sourceCodeUrl:
+      "https://github.com/llanesluis/template/blob/main/src/components/devtools/screen-devtools.tsx",
+    tags: ["devtools", "side-project", "learn"],
+  },
+  {
     title: "Landing page for Las Lasañas LM",
     description:
       "Landing page for a small business specializing in lasagna as a fast-food alternative, designed to showcase their menu and social media presence.",

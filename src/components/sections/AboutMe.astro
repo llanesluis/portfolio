@@ -32,8 +32,20 @@ import TagCodeBlock from "../TagCodeBlock";
       </TagCodeBlock>
     </div>
 
-    <div class="avatar mx-auto size-fit overflow-hidden rounded-full">
-      <Avatar />
+    <div
+      class="avatar group relative mx-auto size-fit overflow-hidden rounded-full"
+    >
+      <div
+        class="absolute inset-0 m-auto size-10/12 scale-90 opacity-0 transition-all duration-300 group-hover:scale-[92%] group-hover:opacity-100"
+      >
+        <img class="rounded-full" src="/photo.webp" />
+      </div>
+
+      <div
+        class="scale-100 opacity-100 transition-all duration-300 group-hover:scale-90 group-hover:opacity-0"
+      >
+        <Avatar />
+      </div>
     </div>
   </article>
 </Section>
@@ -48,7 +60,7 @@ import TagCodeBlock from "../TagCodeBlock";
   .avatar {
     z-index: -1;
     transition: all 0.3s ease-in-out;
-    right: -38px;
+    right: 0px;
   }
 
   @media (min-width: 768px) {
@@ -59,13 +71,13 @@ import TagCodeBlock from "../TagCodeBlock";
     .avatar {
       position: absolute;
       scale: 0.8;
-      margin-right: -24px;
+      margin-right: -38px;
     }
   }
 
   @media (min-width: 1024px) {
     .avatar {
-      margin-right: 0px;
+      margin-right: -36px;
       scale: 1;
     }
   }
