@@ -166,7 +166,7 @@ const {
     }
 
     & > .wip {
-      top: 2rem;
+      bottom: 2rem;
       display: flex;
       justify-items: center;
       align-items: center;
@@ -176,7 +176,7 @@ const {
         position: absolute;
         height: fit-content;
         inset: 0;
-        top: 5%;
+        top: 85%;
         pointer-events: none;
         backdrop-filter: blur(2px);
 
@@ -185,14 +185,14 @@ const {
         text-align: center;
         font-weight: bold;
         color: rgba(0, 0, 0, 0.8);
-        font-size: min(3rem, 6vw);
+        font-size: min(1.25rem, 3.5vw);
         white-space: nowrap;
-        rotate: 3deg;
+        /* rotate: 3deg; */
 
         background-image: linear-gradient(
           to right,
           transparent 5%,
-          #ffd000,
+          hsl(var(--accent)),
           transparent 95%
         );
         box-shadow: 0px 2px 0px 1px rgba(0, 0, 0, 0.1);
