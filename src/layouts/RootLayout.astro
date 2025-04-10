@@ -12,6 +12,7 @@ import "@fontsource-variable/geist-mono";
 import "@fontsource-variable/onest";
 
 import Head from "../components/global/Head.astro";
+import { ThemeToast } from "../components/global/ThemeToast";
 import "../styles/globals.css";
 
 interface Props {
@@ -30,7 +31,7 @@ const { title, description } = Astro.props;
     <ViewTransitions />
   </head>
 
-  <body>
+  <body class="dark:bg-background-dark">
     <!-- Since body is isolated, i added z-index to this element to make it show -->
     <!-- on top of the siblings who do not have a set z-index (no set === applies z-index in cascade) -->
     <TopPageEffect />
@@ -42,6 +43,7 @@ const { title, description } = Astro.props;
       <Footer />
     </div>
 
+    <ThemeToast client:only="react" />
     <Noise />
     <ScrollProgressBar />
     <BottomPageEffect />
