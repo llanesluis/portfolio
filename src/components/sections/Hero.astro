@@ -62,26 +62,30 @@ const typingTextTitle = "frontend developer";
         label="Details"
         client:idle
         status="availableNow"
-        className="text-3xl"
+        className="text-2xl"
       >
-        <article class="flex flex-col gap-8">
-          <div class="flex flex-col gap-2">
-            <h2 class="text-xl">
-              I'm a Software Engineer & <Highlight>Web Developer</Highlight>
-            </h2>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xl">
+            I'm a Software Engineer & <Highlight>Web Developer</Highlight>
+          </h2>
 
-            <p class="text-muted-foreground">
-              <Highlight class="font-semibold text-accent">Almost 2</Highlight> years
-              building with web technologies, both <Highlight
-                >front-end</Highlight
-              > and <Highlight>back-end.</Highlight> Continuously learning new tools
-              and frameworks
-            </p>
-          </div>
-        </article>
+          <p class="text-muted-foreground">
+            <Highlight class="font-semibold text-accent"> 2</Highlight> years building
+            with web technologies, both <Highlight>front-end</Highlight> and <Highlight
+              >back-end.</Highlight
+            > Continuously learning new tools and frameworks.
+          </p>
+        </div>
 
         <div class="relative w-full pt-12">
-          <Technologies />
+          <TagCodeBlock
+            label="TechStack"
+            client:idle
+            className="text-2xl"
+            expanded={false}
+          >
+            <Technologies />
+          </TagCodeBlock>
         </div>
       </TagCodeBlock>
     </header>

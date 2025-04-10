@@ -5,6 +5,7 @@ interface TagCodeBlockProps {
   children: ReactNode;
   label: string;
   className?: string;
+  expanded?: boolean;
   status?: "availableNow" | "working";
 }
 
@@ -13,8 +14,9 @@ export default function TagCodeBlock({
   label,
   className,
   status,
+  expanded = true,
 }: TagCodeBlockProps) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(expanded);
 
   return (
     <div
